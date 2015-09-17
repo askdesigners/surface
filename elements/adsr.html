@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="../bower_components/polymer/polymer.html" rel="import">
+        <link href="d3.html" rel="import">
+        <link href="micro-knob.html" rel="import">
+    </head>
+
+    <dom-module id="adsr-env">
+        <style>
+            /* CSS rules for your element */
+            :host{
+                display: inline-block;
+            }
+
+            [micro-knob]{
+                display: flex;
+            }
+
+            #envelope {
+                fill: lightgrey;
+            }
+
+            section {
+                display: flex;
+                justify-content: space-between;
+                flex-direction: row;
+            }
+        </style>
+        <template>  
+            <svg id="envelope" width="150" height="50" fill="#0f0f0f"></svg>
+            <section>
+                <micro-knob id="attack" label-text="A" cc="{{_attackCC}}" min-value="{{minValue}}" max-value="{{maxValue}}"></micro-knob>
+                <micro-knob id="decay" label-text="D" cc="{{_decayCC}}" min-value="{{minValue}}" max-value="{{maxValue}}"></micro-knob>
+                <micro-knob id="sustain" label-text="S" cc="{{_sustainCC}}" min-value="{{minValue}}" max-value="{{maxValue}}"></micro-knob>
+                <micro-knob id="release" label-text="R" cc="{{_releaseCC}}" min-value="{{minValue}}" max-value="{{maxValue}}"></micro-knob>
+            </section>
+        </template>
+    </dom-module>
+    <script>
+        Polymer({
+            is: "adsr-env",
+            properties: {
+                labelText: {
+                    type: String,
+                    value: ""   
+                },
+                adsrCc: {
+                    type: String,
+                    value: ""
+                },
+                minValue: {
+                    type: Number,
+                    value: 0
+                },
+                maxValue: {
+                    type: Number,
+                    value: 127
+                },
+                _attackValue: {
+                    type: Number,
+                    value: 50,
+                },
+                _decayValue: {
+                    type: Number,
+                    value: 50,
+                },
+                _sustainValue: {
+                    type: Number,
+                    value: 50,
+                },
+                _releaseValue: {
+                    type: Number,
+                    value: 50,
+                },
+                _attackCC: {
+                    type: Number,
+                    value: 0
+                },
+                _decayCC: {
+                    type: Number,
+                    value: 0
+                },
+                _sustainCC: {
+                    type: Number,
+                    value: 0
+                },
+                _releaseCC: {
+                    type: Number,
+                    value: 0
+                }
+            },
+            listeners: {
+                // deltaChange: 'changedDrag',
+                // broadcastDelta: 'valChanged'
+            },
+            valChanged: function(e){
+                this._curDec = this.tempDec;
+            },
+            sendValue: function(e){
+                // convert this into the scaled value as set in min and max
+                // this.fire('sendMidiMessage', this.controlValue);
+            },
+            changedDrag: function(val){
+                console.log('change drag', val.srcElement.id, val.detail);
+            },
+            renderLine:function (decimal) {
+                // d3 stuff goes here
+            },
+            mapValue:function (decimal) {
+                // should get the max-range, derive a scaled range for Y in graph and send values to renderer 
+                this.controlValue = Math.round(this.maxValue * decimal);
+            },
+            ready: function () {
+                this.chart = this.$$('#envelope');
+                var vals = this.adsrCc.split(' ').map(Number);
+                this._attackCC = vals[0];
+                this._decayCC = vals[1];
+                this._sustainCC = vals[2];
+                this._releaseCC = vals[3];
+            }
+        });
+    </script>
+</html>

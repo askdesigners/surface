@@ -1,0 +1,37 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+        <link href="elements/big-knob.html" rel="import">
+        <link href="elements/mid-knob.html" rel="import">
+        <link href="elements/micro-knob.html" rel="import">
+        <link href="elements/adsr.html" rel="import">
+    </head>
+    <body style="-webkit-user-select: none; padding: 100px;">
+        <div style="padding:20px 0; margin-bottom: 20px;" class="big">--</div>
+        <big-knob id="big" label-text="Large" cc="74" min-value="20" max-value="127"></big-knob>
+        <div style="padding:20px 0; margin-bottom: 20px;" class="mid">--</div>
+        <mid-knob id="mid" label-text="Medium" cc="88" min-value="20" max-value="50"></mid-knob>
+        <div style="padding:20px 0; margin-bottom: 20px;" class="micro">--</div>
+        <micro-knob id="micro" label-text="Micro" cc="88" min-value="0" max-value="127"></micro-knob>
+        <div>
+            <span class="attack"></span>
+            <span class="decay"></span>
+            <span class="sustain"></span>
+            <span class="release"></span>
+        </div>
+        <adsr-env adsr-cc="30 31 32 33" min-value="0" max-value="127"></adsr-env>
+        <script>
+            document.getElementsByTagName('body')[0].addEventListener("sendMidiMessage", function (e) {
+                var d = e.srcElement.controlValue,
+                    cc = e.srcElement.cc;
+                document.getElementsByClassName(e.srcElement.id)[0].innerHTML = d + ' --> ' + cc;
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<!-- 
+    handle dragging
+    return a ± number to element 
+-->
+
+<script>
+    dragEventer = {
+
+        listeners: {
+          drag: '_drag',
+          dragstart: '_dragStart',
+          dragend: '_dragStop',
+          mousedown: '_setPoint'
+        },
+        _clickPoint: 0,
+        _lastPos: 0,
+        _delta: 0,
+        _deadPixels: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
+        ready: function () {
+        },
+        _setPoint:function(e){
+            this._clickPoint = e.pageY;
+        },
+        _dragStart: function (e) {
+            var dragIcon = document.createElement('img');
+            dragIcon.src = this._deadPixels;
+            dragIcon.width = 1;
+            e.dataTransfer.setDragImage(dragIcon, -10, -10);
+        },
+        _drag: function(e) {
+            var delta = (e.pageY - this._clickPoint) / this.dragRatio,
+                isMouseUp = (e.clientY == 0 && e.clientX == 0);
+
+            if (this._lastPos != delta && !isMouseUp) {
+                this._lastPos = delta;
+                this._delta = delta;
+                this.fire('deltaChange', -1 * this._delta);
+            }
+        },
+        _dragStop: function (e) {
+            this.fire('broadcastDelta', this._delta);
+            this._delta = 0;
+        }
+    };
+</script>

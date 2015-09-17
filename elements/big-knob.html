@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="../bower_components/polymer/polymer.html" rel="import">
+        <link href="drag.html" rel="import">
+    </head>
+
+    <dom-module id="big-knob">
+        <style>
+        :host {
+            display: inline-block;
+        }
+        </style>
+        <template>  
+            <div style="position:relative;" draggable="true">
+                <svg width="77px" height="77px" viewBox="0 0 77 77">
+                    <defs>
+                        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-1">
+                            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetInner1"></feOffset>
+                            <feGaussianBlur stdDeviation="1.5" in="shadowOffsetInner1" result="shadowBlurInner1"></feGaussianBlur>
+                            <feComposite in="shadowBlurInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+                            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.7 0" in="shadowInnerInner1" type="matrix" result="shadowMatrixInner1"></feColorMatrix>
+                            <feMerge>
+                                <feMergeNode in="SourceGraphic"></feMergeNode>
+                                <feMergeNode in="shadowMatrixInner1"></feMergeNode>
+                            </feMerge>
+                        </filter>
+                        <circle id="path-2" cx="38" cy="38" r="38"></circle>
+                        <linearGradient x1="89.2744625%" y1="61.9402313%" x2="28.7556819%" y2="21.5907153%" id="linearGradient-4">
+                            <stop stop-color="#D9D9D9" stop-opacity="0" offset="0%"></stop>
+                            <stop stop-color="#000000" stop-opacity="0.486724411" offset="100%"></stop>
+                        </linearGradient>
+                    </defs>
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g transform="translate(-1085.000000, -384.000000)">
+                            <g id="big-knob" transform="translate(1085.500000, 384.904250)">
+                                <mask id="mask-3" fill="white">
+                                    <use xlink:href="#path-2"></use>
+                                </mask>
+                                <use id="outer-mask" fill="#ECECEC" filter="url(#filter-1)" xlink:href="#path-2"></use>
+                                <path d="M65,17 L89,40 L48,90 L13,61 L65,17 Z" id="shadow" fill="url(#linearGradient-4)" mask="url(#mask-3)"></path>
+                                <g id="knob" mask="url(#mask-3)">
+                                    <g transform="translate(4.000000, 4.000000)">
+                                        <circle stroke="none" fill="#575757" fill-rule="evenodd" cx="34" cy="34" r="34"></circle>
+                                        <g class="knoblines">
+                                            <path d="M34,53 L34,67" stroke="#515151" stroke-width="2" stroke-linecap="square" fill="none"></path>
+                                            <path d="M56.5166605,14 L56.5166605,28" stroke="#515151" stroke-width="2" stroke-linecap="square" fill="none" transform="translate(56.516660, 21.000000) rotate(-300.000000) translate(-56.516660, -21.000000) "></path>
+                                            <path d="M11.4833395,40 L11.4833395,54" stroke="#515151" stroke-width="2" stroke-linecap="square" fill="none" transform="translate(11.483340, 47.000000) rotate(-300.000000) translate(-11.483340, -47.000000) "></path>
+                                            <path d="M56.5166605,40 L56.5166605,54" stroke="#515151" stroke-width="2" stroke-linecap="square" fill="none" transform="translate(56.516660, 47.000000) rotate(-240.000000) translate(-56.516660, -47.000000) "></path>
+                                            <path d="M11.4833395,14 L11.4833395,28" stroke="#515151" stroke-width="2" stroke-linecap="square" fill="none" transform="translate(11.483340, 21.000000) rotate(-240.000000) translate(-11.483340, -21.000000) "></path>
+                                            <path d="M47,4.4833395 L47,18.4833395" stroke="#515151" stroke-width="2" stroke-linecap="square" fill="none" transform="translate(47.000000, 11.483340) rotate(-330.000000) translate(-47.000000, -11.483340) "></path>
+                                            <path d="M60,27 L60,41" stroke="#515151" stroke-width="2" stroke-linecap="square" fill="none" transform="translate(60.000000, 34.000000) rotate(-270.000000) translate(-60.000000, -34.000000) "></path>
+                                            <path d="M8,27 L8,41" stroke="#515151" stroke-width="2" stroke-linecap="square" fill="none" transform="translate(8.000000, 34.000000) rotate(-270.000000) translate(-8.000000, -34.000000) "></path>
+                                            <path d="M47,49.5166605 L47,63.5166605" stroke="#515151" stroke-width="2" stroke-linecap="square" fill="none" transform="translate(47.000000, 56.516660) rotate(-210.000000) translate(-47.000000, -56.516660) "></path>
+                                            <path d="M21,4.4833395 L21,18.4833395"  stroke="#515151" stroke-width="2" stroke-linecap="square" fill="none" transform="translate(21.000000, 11.483340) rotate(-210.000000) translate(-21.000000, -11.483340) "></path>
+                                            <path d="M21,49.5166605 L21,63.5166605" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" fill="none" transform="translate(21.000000, 56.516660) rotate(-330.000000) translate(-21.000000, -56.516660) "></path>
+                                            <path d="M34,1 L34,15" stroke="#515151" stroke-width="2" stroke-linecap="square" fill="none"></path>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+            <label>{{labelText}}</label>
+        </template>
+    </dom-module>
+    <script>
+        Polymer({
+            is: "big-knob",
+            behaviors: [dragEventer],
+            properties: {
+                labelText: {
+                    type: String,
+                    value: ""   
+                },
+                cc: {
+                    type: Number,
+                    value: 0
+                },
+                minValue: {
+                    type: Number,
+                    value: 0
+                },
+                maxValue: {
+                    type: Number,
+                    value: 127
+                },
+                controlValue: {
+                    type: Number,
+                    value: 0,
+                    observer:'sendValue',
+                    notify: true
+                },
+                dragRatio: {
+                    type: Number,
+                    value: 2
+                },
+                _maxRot: {
+                    type: Number,
+                    value: 300
+                },
+                _currentRot: {
+                    type: Number,
+                    value: 0
+                },
+                _curDec: {
+                    type: Number,
+                    value: 0
+                }
+            },
+            listeners: {
+                deltaChange: 'changedDrag',
+                broadcastDelta: 'valChanged'
+            },
+            valChanged: function(e){
+                this._curDec = this.tempDec;
+            },
+            sendValue: function(e){
+                // convert this into the scaled value as set in min and max
+                this.fire('sendMidiMessage', this.controlValue);
+            },
+            changedDrag: function(val){
+                // should recieve drag delta, map to value and angle, and transform graphic
+                // console.log('rotate knob:', val.detail);
+                // console.log(val.detail);
+                var deltaDec = val.detail / 100;
+                if (this._curDec + deltaDec >= 0 && this._curDec + deltaDec <= 1){
+                    this.tempDec = this._curDec + deltaDec;
+                } else if(this._curDec + deltaDec < 0) {
+                    this.tempDec = 0;
+                } else {
+                    this.tempDec = 1;
+                }
+                this.renderControl(this.tempDec);
+                this.mapValue(this.tempDec);
+            },
+            renderControl:function (decimal) {
+                this._currentRot = this._maxRot * decimal;
+                this.element.setAttribute('transform','rotate('+ (this._currentRot) +' 38 38)');
+            },
+            mapValue:function (decimal) {
+                this.controlValue = Math.round(this.maxValue * decimal);
+            },
+            ready: function () {
+                this.element = this.$$('#knob');
+            }
+        });
+    </script>
+</html>

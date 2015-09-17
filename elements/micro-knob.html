@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="../bower_components/polymer/polymer.html" rel="import">
+        <link href="drag.html" rel="import">
+    </head>
+
+    <dom-module id="micro-knob">
+        <style>
+        :host {
+            display: inline-block;
+        }
+        </style>
+        <template>  
+            <div draggable="true" class="microWrapper">
+                <svg width="27px" height="27px" viewBox="0 0 27 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                    <defs>
+                        <linearGradient x1="71.0385119%" y1="70.8963027%" x2="28.7556819%" y2="21.5907153%" id="linearGradient-1">
+                            <stop stop-color="#D9D9D9" stop-opacity="0" offset="0%"></stop>
+                            <stop stop-color="#000000" stop-opacity="0.5" offset="100%"></stop>
+                        </linearGradient>
+                    </defs>
+                            <g id="micro-knob">
+                                <path d="M17.5813953,4.6097561 L29.0000004,16.1341463 L15.627907,26.6707317 L3.25581395,16.1341463 L17.5813953,4.6097561 Z" id="shadow" fill="url(#linearGradient-1)"></path>
+                                <g id="knob">
+                                    <path d="M18.5789062,14.155841 C20.946283,9.50960233 19.0562482,3.80221119 14.3573954,1.40802608 C9.65854254,-0.986159031 3.93023157,0.839491078 1.56285473,5.48572973 C-0.804522108,10.1319684 1.08551264,15.8393595 5.78436549,18.2335446 C10.4832183,20.6277297 16.2115293,18.8020796 18.5789062,14.155841 L18.5789062,14.155841 L18.5789062,14.155841 Z" id="Oval-10-Copy" fill="#575757"></path>
+                                    <path d="M5.63879615,17.7939648 L9.49323172,10.2292091" id="Line" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+            <label>{{labelText}}</label>
+        </template>
+    </dom-module>
+    <script>
+        Polymer({
+            is: "micro-knob",
+            behaviors: [dragEventer],
+            properties: {
+                labelText: {
+                    type: String,
+                    value: ""   
+                },
+                cc: {
+                    type: Number,
+                    value: 0
+                },
+                minValue: {
+                    type: Number,
+                    value: 0
+                },
+                maxValue: {
+                    type: Number,
+                    value: 127
+                },
+                controlValue: {
+                    type: Number,
+                    value: 0,
+                    observer:'sendValue',
+                    notify: true
+                },
+                dragRatio: {
+                    type: Number,
+                    value: 2
+                },
+                _maxRot: {
+                    type: Number,
+                    value: 300
+                },
+                _currentRot: {
+                    type: Number,
+                    value: 0
+                },
+                _curDec: {
+                    type: Number,
+                    value: 0
+                }
+            },
+            listeners: {
+                deltaChange: 'changedDrag',
+                broadcastDelta: 'valChanged'
+            },
+            valChanged: function(e){
+                this._curDec = this.tempDec;
+            },
+            sendValue: function(e){
+                // convert this into the scaled value as set in min and max
+                this.fire('sendMidiMessage', this.controlValue);
+            },
+            changedDrag: function(val){
+                var deltaDec = val.detail / 100;
+                if (this._curDec + deltaDec >= 0 && this._curDec + deltaDec <= 1){
+                    this.tempDec = this._curDec + deltaDec;
+                } else if(this._curDec + deltaDec < 0) {
+                    this.tempDec = 0;
+                } else {
+                    this.tempDec = 1;
+                }
+                this.renderControl(this.tempDec);
+                this.mapValue(this.tempDec);
+            },
+            renderControl:function (decimal) {
+                this._currentRot = this._maxRot * decimal;
+                this.element.setAttribute('transform','rotate('+ (this._currentRot) +' 9.9 9.9)');
+            },
+            mapValue:function (decimal) {
+                this.controlValue = Math.round(this.maxValue * decimal);
+                console.warn(this.controlValue);
+            },
+            ready: function () {
+                this.element = this.$$('#knob');
+            }
+        });
+    </script>
+</html>
