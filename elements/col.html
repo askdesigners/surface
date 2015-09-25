@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+
+    <dom-module id="ui-col">
+        <style>
+        :host {
+            display: flex;
+            flex-grow: 1;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: flex-start;
+            margin-right: 10px;
+            padding: 10px 0;
+            border-right: 2px grey solid;
+        }
+        :host:last-child {
+            margin-right: 0px;
+            border-right: none;
+        }
+        .layoutCol{
+            display: inline-block;
+            margin: 0 auto;
+        }
+        .colLabel{
+            display: block;
+            width: 100%;
+            font-size: 1em;
+            text-align: center;
+            margin: 0 0 10px 0;
+            font-weight: 300;
+        }
+        </style>
+        <template>  
+            <section class="layoutCol">
+                <h4 class="colLabel">{{label}}</h4>
+                <div class="colContent">
+                    <content></content>
+                </div>
+            </section>
+            
+        </template>
+    </dom-module>
+    <script>
+        Polymer({
+            is: "ui-col",
+            properties: {
+                label: {
+                    type: String,
+                    value: ""   
+                },
+                direction: {
+                    type: String,
+                    value: "horizontal"
+                }
+            },
+            listeners: {},
+            ready: function () {
+                if (this.label == "") {
+                    var elem = this.$$('.colLabel');
+                    elem.parentNode.removeChild(elem);
+                }
+            }
+        });
+    </script>
+</html>

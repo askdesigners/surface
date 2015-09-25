@@ -9,6 +9,8 @@
         <style>
         :host {
             display: inline-block;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 400;
         }
         </style>
         <template>  
@@ -19,10 +21,10 @@
                             <stop stop-color="#D9D9D9" stop-opacity="0" offset="0%"></stop>
                             <stop stop-color="#000000" stop-opacity="0.5" offset="100%"></stop>
                         </linearGradient>
-                    </defs>
-                            <g id="micro-knob">
+                    </defs> 
+                            <g>
                                 <path d="M17.5813953,4.6097561 L29.0000004,16.1341463 L15.627907,26.6707317 L3.25581395,16.1341463 L17.5813953,4.6097561 Z" id="shadow" fill="url(#linearGradient-1)"></path>
-                                <g id="knob">
+                                <g id="microknob-knob">
                                     <path d="M18.5789062,14.155841 C20.946283,9.50960233 19.0562482,3.80221119 14.3573954,1.40802608 C9.65854254,-0.986159031 3.93023157,0.839491078 1.56285473,5.48572973 C-0.804522108,10.1319684 1.08551264,15.8393595 5.78436549,18.2335446 C10.4832183,20.6277297 16.2115293,18.8020796 18.5789062,14.155841 L18.5789062,14.155841 L18.5789062,14.155841 Z" id="Oval-10-Copy" fill="#575757"></path>
                                     <path d="M5.63879615,17.7939648 L9.49323172,10.2292091" id="Line" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square"></path>
                                 </g>
@@ -87,7 +89,7 @@
             },
             sendValue: function(e){
                 // convert this into the scaled value as set in min and max
-                this.fire('sendMidiMessage', this.controlValue);
+                this.fire('sendMidiMessage', {val: this.controlValue, cc: this.cc});
             },
             changedDrag: function(val){
                 var deltaDec = val.detail / 100;
@@ -107,10 +109,9 @@
             },
             mapValue:function (decimal) {
                 this.controlValue = Math.round(this.maxValue * decimal);
-                console.warn(this.controlValue);
             },
             ready: function () {
-                this.element = this.$$('#knob');
+                this.element = this.$$('#microknob-knob');
             }
         });
     </script>

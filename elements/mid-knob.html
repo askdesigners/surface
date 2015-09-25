@@ -9,13 +9,30 @@
         <style>
         :host {
             display: inline-block;
+            margin: 0 auto;
+        }
+        :host.vertical {
+            display: block;
+        }
+        .midknobWrapper{
+            box-sizing: border-box;
+            padding: 10px 10px 0 10px;
+            width: 80px;
+            min-height: 90px;
+        }
+        .midknobLabel {
+            text-align: center;
+            display: block;
+            font-size: 0.8em;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 400;
         }
         </style>
         <template>  
-            <div style="position:relative;" draggable="true">
-                <svg width="58px" height="54px" viewBox="0 0 58 54">
+            <div style="position:relative;" draggable="true" class="midknobWrapper">
+                <svg width="100%" height="60px" viewBox="0 0 58 54">
                     <defs>
-                        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-1">
+                        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="midknob-filter-1">
                             <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetInner1"></feOffset>
                             <feGaussianBlur stdDeviation="1.5" in="shadowOffsetInner1" result="shadowBlurInner1"></feGaussianBlur>
                             <feComposite in="shadowBlurInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
@@ -25,46 +42,44 @@
                                 <feMergeNode in="shadowMatrixInner1"></feMergeNode>
                             </feMerge>
                         </filter>
-                        <ellipse id="path-221" cx="17.5" cy="17.5" rx="17.5" ry="17.5"></ellipse>
-                        <linearGradient x1="89.2744625%" y1="61.9402313%" x2="28.7556819%" y2="21.5907153%" id="linearGradient-4">
+                        <ellipse id="midknob-path-2" cx="17.5" cy="17.5" rx="17.5" ry="17.5"></ellipse>
+                        <linearGradient x1="89.2744625%" y1="61.9402313%" x2="28.7556819%" y2="21.5907153%" id="midknob-linearGradient-4">
                             <stop stop-color="#D9D9D9" stop-opacity="0" offset="0%"></stop>
                             <stop stop-color="#000000" stop-opacity="0.5" offset="100%"></stop>
                         </linearGradient>
                     </defs>
-                        <g transform="translate(-1209.000000, -396.000000)">
-                            <g id="mid-knob" transform="translate(1209.651110, 396.000000)">
-                                <g id="scalelines">
-                                    <path d="M42.7901251,53.1639527 C51.286662,48.2304828 57,39.0324522 57,28.5 C57,12.7598846 44.2401154,0 28.5,0 C12.7598846,0 0,12.7598846 0,28.5 C0,38.8071796 5.47155303,47.8364095 13.6685405,52.8415712 L24,36.9999999 L34,37 L42.7901251,53.1639527 L42.7901251,53.1639527 Z" id="Oval-10-Copy-2" fill="#F5F5F5"></path>
-                                    <path d="M54.5,28.5 L47.5,28.5" stroke="#C7C7C7" stroke-linecap="square"></path>
-                                    <path d="M9.5,28.5 L2.5,28.5" stroke="#C7C7C7" stroke-linecap="square"></path>
-                                    <path d="M51.0166605,41 L44.9544827,37.5" stroke="#C7C7C7" stroke-linecap="square"></path>
-                                    <path d="M12.0455173,18.5 L5.9833395,15" stroke="#C7C7C7" stroke-linecap="square"></path>
-                                    <path d="M28.5,9 L28.5,3" stroke="#C7C7C7" stroke-linecap="square"></path>
-                                    <path d="M15.5,50.5166605 L19,44.4544827" stroke="#C7C7C7" stroke-linecap="square"></path>
-                                    <path d="M38,11.5455173 L41.5,5.4833395" stroke="#C7C7C7" stroke-linecap="square"></path>
-                                    <path d="M5.9833395,41 L12.0455173,37.5" stroke="#C7C7C7" stroke-linecap="square"></path>
-                                    <path d="M44.9544827,18.5 L51.0166605,15" stroke="#C7C7C7" stroke-linecap="square"></path>
-                                    <path d="M15.5,5.4833395 L19,11.5455173" stroke="#C7C7C7" stroke-linecap="square"></path>
-                                    <path d="M38,44.4544827 L41.5,50.5166605" stroke="#C7C7C7" stroke-linecap="square"></path>
-                                </g>
-                                <g id="trough" transform="translate(11.000000, 11.000000)">
-                                    <mask id="mask-3" sketch:name="outermask" fill="white">
-                                        <use xlink:href="#path-221"></use>
-                                    </mask>
-                                    <use id="outermask" fill="white" filter="url(#filter-1)" xlink:href="#path-221"></use>
-                                    <path d="M30,10 L45.5,27.5 L27,43.5 L8,27.5 L30,10 Z" id="shadow" fill="url(#linearGradient-4)" mask="url(#mask-3)"></path>
-                                </g>
-                                <g id="knob">
-                                    <g transform="translate(13.000000, 13.000000)">
-                                        <path d="M28.0573684,22.75 C32.0614328,15.814757 29.685243,6.94669608 22.75,2.94263165 C15.814757,-1.06143279 6.94669608,1.31475696 2.94263165,8.25 C-1.06143279,15.185243 1.31475696,24.0533039 8.25,28.0573684 C15.185243,32.0614328 24.0533039,29.685243 28.0573684,22.75 L28.0573684,22.75 Z" id="Oval-10-Copy" fill="#575757"></path>
-                                        <path d="M8.0669873,27.3743557 L14.5861895,16.0827662" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square"></path>
-                                    </g>
-                                </g>
+                    <g id="midknob">
+                        <g id="midknob-scalelines">
+                            <path d="M42.7901251,53.1639527 C51.286662,48.2304828 57,39.0324522 57,28.5 C57,12.7598846 44.2401154,0 28.5,0 C12.7598846,0 0,12.7598846 0,28.5 C0,38.8071796 5.47155303,47.8364095 13.6685405,52.8415712 L24,36.9999999 L34,37 L42.7901251,53.1639527 L42.7901251,53.1639527 Z" id="Oval-10-Copy-2" fill="#F5F5F5"></path>
+                            <path d="M54.5,28.5 L47.5,28.5" stroke="#C7C7C7"></path>
+                            <path d="M9.5,28.5 L2.5,28.5" stroke="#C7C7C7"></path>
+                            <path d="M51.0166605,41 L44.9544827,37.5" stroke="#C7C7C7"></path>
+                            <path d="M12.0455173,18.5 L5.9833395,15" stroke="#C7C7C7"></path>
+                            <path d="M28.5,9 L28.5,3" stroke="#C7C7C7"></path>
+                            <path d="M15.5,50.5166605 L19,44.4544827" stroke="#C7C7C7"></path>
+                            <path d="M38,11.5455173 L41.5,5.4833395" stroke="#C7C7C7"></path>
+                            <path d="M5.9833395,41 L12.0455173,37.5" stroke="#C7C7C7"></path>
+                            <path d="M44.9544827,18.5 L51.0166605,15" stroke="#C7C7C7"></path>
+                            <path d="M15.5,5.4833395 L19,11.5455173" stroke="#C7C7C7"></path>
+                            <path d="M38,44.4544827 L41.5,50.5166605" stroke="#C7C7C7"></path>
+                        </g>
+                        <g id="midknob-trough" transform="translate(11.000000, 11.000000)">
+                            <mask id="midknob-mask-3" fill="white">
+                                <use xlink:href="#midknob-path-2"></use>
+                            </mask>
+                            <use id="midknob-outermask" fill="white" filter="url(#midknob-filter-1)" xlink:href="#midknob-path-2"></use>
+                            <path d="M30,10 L45.5,27.5 L27,43.5 L8,27.5 L30,10 Z" id="shadow" fill="url(#midknob-linearGradient-4)" mask="url(#midknob-mask-3)"></path>
+                        </g>
+                        <g id="midknob-knob">
+                            <g transform="translate(13.000000, 13.000000)">
+                                <path d="M28.0573684,22.75 C32.0614328,15.814757 29.685243,6.94669608 22.75,2.94263165 C15.814757,-1.06143279 6.94669608,1.31475696 2.94263165,8.25 C-1.06143279,15.185243 1.31475696,24.0533039 8.25,28.0573684 C15.185243,32.0614328 24.0533039,29.685243 28.0573684,22.75 L28.0573684,22.75 Z" id="Oval-10-Copy" fill="#575757"></path>
+                                <path d="M8.0669873,27.3743557 L14.5861895,16.0827662" stroke="#FFFFFF" stroke-width="2"></path>
                             </g>
                         </g>
-                    </svg>
+                    </g>
+                </svg>
+                <label class="midknobLabel">{{labelText}}</label>
             </div>
-            <label>{{labelText}}</label>
         </template>
     </dom-module>
     <script>
@@ -120,7 +135,7 @@
             },
             sendValue: function(e){
                 // convert this into the scaled value as set in min and max
-                this.fire('sendMidiMessage', this.controlValue);
+                this.fire('sendMidiMessage', {val: this.controlValue, cc: this.cc});
             },
             changedDrag: function(val){
                 var deltaDec = val.detail / 100;
@@ -142,7 +157,9 @@
                 this.controlValue = Math.round(this.maxValue * decimal);
             },
             ready: function () {
-                this.element = this.$$('#knob');
+                this.element = this.$$('#midknob-knob');
+                this.direction = this.parentNode.parentNode.direction;
+                this.setAttribute("class", this.direction);
             }
         });
     </script>

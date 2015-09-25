@@ -7,31 +7,54 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+        <link href="css/main.css" rel="stylesheet">
         <link href="elements/big-knob.html" rel="import">
         <link href="elements/mid-knob.html" rel="import">
         <link href="elements/micro-knob.html" rel="import">
         <link href="elements/adsr.html" rel="import">
+        <link href="elements/row.html" rel="import">
+        <link href="elements/col.html" rel="import">
     </head>
-    <body style="-webkit-user-select: none; padding: 100px;">
-        <div style="padding:20px 0; margin-bottom: 20px;" class="big">--</div>
-        <big-knob id="big" label-text="Large" cc="74" min-value="20" max-value="127"></big-knob>
-        <div style="padding:20px 0; margin-bottom: 20px;" class="mid">--</div>
-        <mid-knob id="mid" label-text="Medium" cc="88" min-value="20" max-value="50"></mid-knob>
-        <div style="padding:20px 0; margin-bottom: 20px;" class="micro">--</div>
-        <micro-knob id="micro" label-text="Micro" cc="88" min-value="0" max-value="127"></micro-knob>
-        <div>
-            <span class="attack"></span>
-            <span class="decay"></span>
-            <span class="sustain"></span>
-            <span class="release"></span>
-        </div>
-        <adsr-env adsr-cc="30 31 32 33" min-value="0" max-value="127"></adsr-env>
-        <script>
-            document.getElementsByTagName('body')[0].addEventListener("sendMidiMessage", function (e) {
-                var d = e.srcElement.controlValue,
-                    cc = e.srcElement.cc;
-                document.getElementsByClassName(e.srcElement.id)[0].innerHTML = d + ' --> ' + cc;
-            });
-        </script>
+    <body>
+        <h1>Korg MS2000</h1>
+        <ui-row label="Row 1">
+            <ui-col direction="vertical">
+                <big-knob label-text="Large" cc="74" min-value="20" max-value="127"></big-knob>
+                <big-knob label-text="Large Three" cc="74" min-value="20" max-value="127"></big-knob>
+            </ui-col>    
+            <ui-col direction="vertical"> 
+                <big-knob label-text="Large Four" cc="74" min-value="20" max-value="127"></big-knob>
+                <big-knob label-text="Large Two" cc="74" min-value="20" max-value="127"></big-knob>
+            </ui-col>    
+            <ui-col>    
+                <ui-row label="Filter">
+                    <mid-knob label-text="Medium One" cc="88" min-value="20" max-value="50"></mid-knob>
+                    <mid-knob label-text="Medium Two" cc="88" min-value="20" max-value="50"></mid-knob>
+                    <mid-knob label-text="Medium Seventeen" cc="88" min-value="20" max-value="50"></mid-knob>
+                    <mid-knob label-text="Medium Longer still" cc="88" min-value="20" max-value="50"></mid-knob>
+                </ui-row>
+            </ui-col> 
+            <ui-col>
+                <micro-knob id="micro" label-text="Micro" cc="88" min-value="0" max-value="127"></micro-knob>
+                <adsr-env adsr-cc="30 31 32 33" min-value="0" max-value="127"></adsr-env>
+            </ui-col> 
+        </ui-row>
+        <ui-row>
+            <ui-col label="Amp 1">
+                <adsr-env adsr-cc="30 31 32 33" min-value="0" max-value="127"></adsr-env>
+            </ui-col>
+            <ui-col label="Amp 2">
+                <adsr-env adsr-cc="30 31 32 33" min-value="0" max-value="127"></adsr-env>
+            </ui-col>
+            <ui-col label="Filter 1">
+                <adsr-env adsr-cc="30 31 32 33" min-value="0" max-value="127"></adsr-env>
+            </ui-col>
+            <ui-col label="Filter 2">
+                <adsr-env adsr-cc="30 31 32 33" min-value="0" max-value="127"></adsr-env>
+            </ui-col>
+        </ui-row>
+        <script src="js/vendor/jquery-1.11.2.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/glue.js"></script>
     </body>
 </html>

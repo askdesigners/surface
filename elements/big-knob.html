@@ -8,14 +8,31 @@
     <dom-module id="big-knob">
         <style>
         :host {
+            margin: 0 auto;
             display: inline-block;
         }
+        :host.vertical {
+            display: block;
+        }
+        .bigknobWrapper{
+            box-sizing: border-box;
+            padding: 10px 10px 0 10px; 
+            width: 100px;
+            height: 120px;
+        }
+        .bigknobLabel {
+            text-align: center;
+            display: block;
+            font-size: 1em;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 400;
+        }
         </style>
-        <template>  
-            <div style="position:relative;" draggable="true">
-                <svg width="77px" height="77px" viewBox="0 0 77 77">
+        <template>
+            <div draggable="true" class="bigknobWrapper">
+                <svg width="100%" height="82px" viewBox="0 0 77 77">
                     <defs>
-                        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-1">
+                        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="bigknob-filter-1">
                             <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetInner1"></feOffset>
                             <feGaussianBlur stdDeviation="1.5" in="shadowOffsetInner1" result="shadowBlurInner1"></feGaussianBlur>
                             <feComposite in="shadowBlurInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
@@ -25,45 +42,39 @@
                                 <feMergeNode in="shadowMatrixInner1"></feMergeNode>
                             </feMerge>
                         </filter>
-                        <circle id="path-2" cx="38" cy="38" r="38"></circle>
+                        <circle id="bigknob-path-2" cx="38" cy="38" r="38"></circle>
                         <linearGradient x1="89.2744625%" y1="61.9402313%" x2="28.7556819%" y2="21.5907153%" id="linearGradient-4">
                             <stop stop-color="#D9D9D9" stop-opacity="0" offset="0%"></stop>
                             <stop stop-color="#000000" stop-opacity="0.486724411" offset="100%"></stop>
                         </linearGradient>
                     </defs>
-                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                        <g transform="translate(-1085.000000, -384.000000)">
-                            <g id="big-knob" transform="translate(1085.500000, 384.904250)">
-                                <mask id="mask-3" fill="white">
-                                    <use xlink:href="#path-2"></use>
-                                </mask>
-                                <use id="outer-mask" fill="#ECECEC" filter="url(#filter-1)" xlink:href="#path-2"></use>
-                                <path d="M65,17 L89,40 L48,90 L13,61 L65,17 Z" id="shadow" fill="url(#linearGradient-4)" mask="url(#mask-3)"></path>
-                                <g id="knob" mask="url(#mask-3)">
-                                    <g transform="translate(4.000000, 4.000000)">
-                                        <circle stroke="none" fill="#575757" fill-rule="evenodd" cx="34" cy="34" r="34"></circle>
-                                        <g class="knoblines">
-                                            <path d="M34,53 L34,67" stroke="#515151" stroke-width="2" stroke-linecap="square" fill="none"></path>
-                                            <path d="M56.5166605,14 L56.5166605,28" stroke="#515151" stroke-width="2" stroke-linecap="square" fill="none" transform="translate(56.516660, 21.000000) rotate(-300.000000) translate(-56.516660, -21.000000) "></path>
-                                            <path d="M11.4833395,40 L11.4833395,54" stroke="#515151" stroke-width="2" stroke-linecap="square" fill="none" transform="translate(11.483340, 47.000000) rotate(-300.000000) translate(-11.483340, -47.000000) "></path>
-                                            <path d="M56.5166605,40 L56.5166605,54" stroke="#515151" stroke-width="2" stroke-linecap="square" fill="none" transform="translate(56.516660, 47.000000) rotate(-240.000000) translate(-56.516660, -47.000000) "></path>
-                                            <path d="M11.4833395,14 L11.4833395,28" stroke="#515151" stroke-width="2" stroke-linecap="square" fill="none" transform="translate(11.483340, 21.000000) rotate(-240.000000) translate(-11.483340, -21.000000) "></path>
-                                            <path d="M47,4.4833395 L47,18.4833395" stroke="#515151" stroke-width="2" stroke-linecap="square" fill="none" transform="translate(47.000000, 11.483340) rotate(-330.000000) translate(-47.000000, -11.483340) "></path>
-                                            <path d="M60,27 L60,41" stroke="#515151" stroke-width="2" stroke-linecap="square" fill="none" transform="translate(60.000000, 34.000000) rotate(-270.000000) translate(-60.000000, -34.000000) "></path>
-                                            <path d="M8,27 L8,41" stroke="#515151" stroke-width="2" stroke-linecap="square" fill="none" transform="translate(8.000000, 34.000000) rotate(-270.000000) translate(-8.000000, -34.000000) "></path>
-                                            <path d="M47,49.5166605 L47,63.5166605" stroke="#515151" stroke-width="2" stroke-linecap="square" fill="none" transform="translate(47.000000, 56.516660) rotate(-210.000000) translate(-47.000000, -56.516660) "></path>
-                                            <path d="M21,4.4833395 L21,18.4833395"  stroke="#515151" stroke-width="2" stroke-linecap="square" fill="none" transform="translate(21.000000, 11.483340) rotate(-210.000000) translate(-21.000000, -11.483340) "></path>
-                                            <path d="M21,49.5166605 L21,63.5166605" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" fill="none" transform="translate(21.000000, 56.516660) rotate(-330.000000) translate(-21.000000, -56.516660) "></path>
-                                            <path d="M34,1 L34,15" stroke="#515151" stroke-width="2" stroke-linecap="square" fill="none"></path>
-                                        </g>
-                                    </g>
-                                </g>
+                    <g id="big-knob">
+                        <mask id="bigknob-mask-3" fill="white">
+                            <use xlink:href="#bigknob-path-2"></use>
+                        </mask>
+                        <use id="bigknob-outer-mask" fill="#ECECEC" filter="url(#bigknob-filter-1)" xlink:href="#bigknob-path-2"></use>
+                        <path d="M65,17 L89,40 L48,90 L13,61 L65,17 Z" id="shadow" fill="url(#linearGradient-4)" mask="url(#bigknob-mask-3)"></path>
+                        <g id="bigknob-knob">
+                            <g transform="translate(4.000000, 4.000000)">
+                                <circle id="bigknob" fill="#575757" cx="34" cy="34" r="34"></circle>
+                                <path d="M34,53 L34,67" stroke="#515151" stroke-width="2"></path>
+                                <path d="M62.5788383,17.5 L50.4544827,24.5" stroke="#515151" stroke-width="2"></path>
+                                <path d="M17.5455173,43.5 L5.42116168,50.5" stroke="#515151" stroke-width="2"></path>
+                                <path d="M62.5788383,50.5 L50.4544827,43.5" stroke="#515151" stroke-width="2"></path>
+                                <path d="M17.5455173,24.5 L5.42116168,17.5" stroke="#515151" stroke-width="2"></path>
+                                <path d="M50.5,5.42116168 L43.5,17.5455173" stroke="#515151" stroke-width="2"></path>
+                                <path d="M67,34 L53,34" stroke="#515151" stroke-width="2"></path>
+                                <path d="M15,34 L1,34" stroke="#515151" stroke-width="2"></path>
+                                <path d="M50.5,62.5788383 L43.5,50.4544827" stroke="#515151" stroke-width="2"></path>
+                                <path d="M24.5,17.5455173 L17.5,5.42116168" stroke="#515151" stroke-width="2"></path>
+                                <path d="M24.5,50.4544827 L17.5,62.5788383" stroke="#FFFFFF" stroke-width="2"></path>
+                                <path d="M34,2 L34,16" stroke="#515151" stroke-width="2"></path>
                             </g>
                         </g>
                     </g>
                 </svg>
+                <label class="bigknobLabel">{{labelText}}</label>
             </div>
-            <label>{{labelText}}</label>
         </template>
     </dom-module>
     <script>
@@ -119,7 +130,7 @@
             },
             sendValue: function(e){
                 // convert this into the scaled value as set in min and max
-                this.fire('sendMidiMessage', this.controlValue);
+                this.fire('sendMidiMessage', {val: this.controlValue, cc: this.cc});
             },
             changedDrag: function(val){
                 // should recieve drag delta, map to value and angle, and transform graphic
@@ -144,7 +155,13 @@
                 this.controlValue = Math.round(this.maxValue * decimal);
             },
             ready: function () {
-                this.element = this.$$('#knob');
+                this.element = this.$$('#bigknob-knob');
+                console.log('ready', this.parentNode);
+                this.direction = this.parentNode.parentNode.parentNode.direction;
+                this.setAttribute("class", this.direction);
+            },
+            attached: function () {
+                console.log('attached', this.parentNode);
             }
         });
     </script>

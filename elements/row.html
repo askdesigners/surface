@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+
+    <dom-module id="ui-row">
+        <style>
+        :host {
+            display: block;
+            background: rgba(216,216,216,.45);
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        :host:last-child {
+            margin-bottom: 0;
+        }
+        ui-row {
+            padding: 0;
+        }
+        .rowContent{
+            display: flex;
+        }
+        .rowLabel{
+            display: block;
+            width: 100%;
+            font-size: 1.2em;
+            text-align: center;
+            margin: 0 0 10px 0;
+            font-weight: 300;
+        }
+        </style>
+        <template>  
+            <section class="layoutRow">
+                <h3 class="rowLabel">{{label}}</h3>
+                <div class="rowContent">
+                    <content></content>
+                </div>
+            </section>
+            
+        </template>
+    </dom-module>
+    <script>
+        Polymer({
+            is: "ui-row",
+            properties: {
+                label: {
+                    type: String,
+                    value: ""   
+                }
+            },
+            listeners: {},
+            ready: function () {
+                if (this.label == "") {
+                    var elem = this.$$('.rowLabel');
+                    elem.parentNode.removeChild(elem);
+                }
+            }
+        });
+    </script>
+</html>
