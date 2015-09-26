@@ -12,7 +12,7 @@
             justify-content: center;
             align-items: flex-start;
             margin-right: 10px;
-            padding: 10px 0;
+            /*padding: 10px 0;*/
             border-right: 2px grey solid;
         }
         :host:last-child {
@@ -60,6 +60,12 @@
                 if (this.label == "") {
                     var elem = this.$$('.colLabel');
                     elem.parentNode.removeChild(elem);
+                }
+            },
+            attached: function (argument) {
+                var children = this.$$('.colContent').children;
+                for (var i = children.length - 1; i >= 0; i--) {
+                    children[i].setAttribute("class", this.direction);
                 }
             }
         });

@@ -16,22 +16,29 @@
         <link href="elements/col.html" rel="import">
     </head>
     <body>
-        <h1>Korg MS2000</h1>
+        <nav>
+            <h1>Korg MS2000</h1>
+            <div id="controls">
+                <label>Output</label>
+                <select id="output"></select>
+                <a>Logs</a>
+            </div>
+        </nav>
         <ui-row label="Row 1">
             <ui-col direction="vertical">
-                <big-knob label-text="Large" cc="74" min-value="20" max-value="127"></big-knob>
-                <big-knob label-text="Large Three" cc="74" min-value="20" max-value="127"></big-knob>
+                <big-knob label-text="Large" cc="70" min-value="20" max-value="127"></big-knob>
+                <big-knob label-text="Large Three" cc="71" min-value="20" max-value="127"></big-knob>
             </ui-col>    
             <ui-col direction="vertical"> 
-                <big-knob label-text="Large Four" cc="74" min-value="20" max-value="127"></big-knob>
-                <big-knob label-text="Large Two" cc="74" min-value="20" max-value="127"></big-knob>
+                <big-knob label-text="Large Four" cc="72" min-value="20" max-value="127"></big-knob>
+                <big-knob label-text="Large Two" cc="73" min-value="20" max-value="127"></big-knob>
             </ui-col>    
             <ui-col>    
                 <ui-row label="Filter">
                     <mid-knob label-text="Medium One" cc="88" min-value="20" max-value="50"></mid-knob>
-                    <mid-knob label-text="Medium Two" cc="88" min-value="20" max-value="50"></mid-knob>
-                    <mid-knob label-text="Medium Seventeen" cc="88" min-value="20" max-value="50"></mid-knob>
-                    <mid-knob label-text="Medium Longer still" cc="88" min-value="20" max-value="50"></mid-knob>
+                    <mid-knob label-text="Medium Two" cc="89" min-value="20" max-value="50"></mid-knob>
+                    <mid-knob label-text="Medium Seventeen" cc="90" min-value="20" max-value="50"></mid-knob>
+                    <mid-knob label-text="Medium Longer still" cc="91" min-value="20" max-value="50"></mid-knob>
                 </ui-row>
             </ui-col> 
             <ui-col>
@@ -41,20 +48,20 @@
         </ui-row>
         <ui-row>
             <ui-col label="Amp 1">
-                <adsr-env adsr-cc="30 31 32 33" min-value="0" max-value="127"></adsr-env>
+                <adsr-env adsr-cc="34 35 36 37" min-value="0" max-value="127"></adsr-env>
             </ui-col>
             <ui-col label="Amp 2">
-                <adsr-env adsr-cc="30 31 32 33" min-value="0" max-value="127"></adsr-env>
+                <adsr-env adsr-cc="38 39 40 41" min-value="0" max-value="127"></adsr-env>
             </ui-col>
             <ui-col label="Filter 1">
-                <adsr-env adsr-cc="30 31 32 33" min-value="0" max-value="127"></adsr-env>
+                <adsr-env adsr-cc="42 43 44 45" min-value="0" max-value="127"></adsr-env>
             </ui-col>
             <ui-col label="Filter 2">
-                <adsr-env adsr-cc="30 31 32 33" min-value="0" max-value="127"></adsr-env>
+                <adsr-env adsr-cc="46 47 48 49" min-value="0" max-value="127"></adsr-env>
             </ui-col>
         </ui-row>
         <script src="js/vendor/jquery-1.11.2.js"></script>
-        <script src="js/main.js"></script>
+        <script src="js/surface.js"></script>
         <script src="js/glue.js"></script>
     </body>
 </html>

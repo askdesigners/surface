@@ -10,7 +10,24 @@ body {
     font-size: 16px;
 }
 
-h1 {
+nav {
+    padding: 20px 0 10px;
+    line-height: 2em;
+}
+
+nav h1 {
     font-family: 'Roboto Condensed', sans-serif;
     font-weight: 400;
+    display: inline-block;
+    margin: 0;
+    font-size: 2em;
+}
+
+#controls {
+    display: inline-block;
+    float: right;
+}
+
+#controls .selectedDevice {
+    display: inline-block;
 }

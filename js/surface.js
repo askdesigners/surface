@@ -11,9 +11,7 @@ function Surface(){
 
     var self = this;
 
-    this.inputs = [],
     this.outputs = [],
-    this.input = null,
     this.output = null,
     this.hasDevices = false,
     this.recievers = [];
@@ -32,21 +30,12 @@ function Surface(){
     }
 
     function onMIDIWorks(midi) {
-    
-        var inputs = midi.inputs.values(),
-            outputs = midi.outputs.values();
-
-        for (var input = inputs.next(); input && !input.done; input = inputs.next()) {
-            self.inputs.push(input.value);
-        }
+        // filters out unnamed midi devices and adds them to a useful array
+        var outputs = midi.outputs.values();
 
         for (var output = outputs.next(); output && !output.done; output = outputs.next()) {
             self.outputs.push(output.value);
         }
-
-        self.inputs = self.inputs.filter(function(item){
-            return item.name !== '';
-        });
 
         self.outputs = self.outputs.filter(function(item){
             return item.name !== '';
@@ -63,30 +52,14 @@ Surface.prototype = {
     constructor: Surface,
 
     init: function(){
-
         new UI(this);
     },
 
-    send: function (message) {
-        this.output.send([177, 0, message]);
-    },
-
-    setInput: function (id) {
-        var self = this;
-
-        for (var i = this.inputs.length - 1; i >= 0; i--) {
-            if (this.inputs[i].id = id){
-                this.input = this.inputs[i];
-            } 
-        }
-        this.input.onmidimessage = function(msg){
-
-            self.callRecievers(msg);
-        }
+    send: function (m) {
+        this.surface.output.send([177, m.cc, m.val]);
     },
 
     setOutput: function (id) {
-
         for (var i = this.outputs.length - 1; i >= 0; i--) {
             if (this.outputs[i].id = id){
                 this.output = this.outputs[i];
@@ -107,11 +80,5 @@ Surface.prototype = {
         }
     }
 };
-
-var Messenger = function Messenger (argument) {
-    // dispaches messages from controls to the interface
-};
-
-var Control = function Control (argument) {};
 
 var S = new Surface();  
