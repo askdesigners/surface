@@ -8,17 +8,40 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
         <link href="css/main.css" rel="stylesheet">
+
+        <link href="elements/row.html" rel="import">
+        <link href="elements/col.html" rel="import">
+
         <link href="elements/big-knob.html" rel="import">
         <link href="elements/mid-knob.html" rel="import">
         <link href="elements/micro-knob.html" rel="import">
+
         <link href="elements/adsr.html" rel="import">
-        <link href="elements/row.html" rel="import">
-        <link href="elements/col.html" rel="import">
+        <link href="elements/big-button.html" rel="import">
     </head>
     <body>
         <nav>
             <h1>Korg MS2000</h1>
             <div id="controls">
+                <label>Channel</label>
+                <select id="channel">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                </select>
                 <label>Output</label>
                 <select id="output"></select>
                 <a>Logs</a>
@@ -26,7 +49,7 @@
         </nav>
         <ui-row label="Row 1">
             <ui-col direction="vertical">
-                <big-knob label-text="Large" cc="70" min-value="20" max-value="127"></big-knob>
+                <big-button label-text="Large" cc="10" off-value="0" on-value="127"></big-button>
                 <big-knob label-text="Large Three" cc="71" min-value="20" max-value="127"></big-knob>
             </ui-col>    
             <ui-col direction="vertical"> 
