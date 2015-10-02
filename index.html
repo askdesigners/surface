@@ -17,7 +17,12 @@
         <link href="elements/micro-knob.html" rel="import">
 
         <link href="elements/adsr.html" rel="import">
+        <link href="elements/lfo.html" rel="import">
+        <link href="elements/btn-group.html" rel="import">
+
         <link href="elements/big-button.html" rel="import">
+        <link href="elements/mid-button.html" rel="import">
+        <link href="elements/micro-button.html" rel="import">
     </head>
     <body>
         <nav>
@@ -44,17 +49,20 @@
                 </select>
                 <label>Output</label>
                 <select id="output"></select>
-                <a>Logs</a>
             </div>
         </nav>
         <ui-row label="Row 1">
             <ui-col direction="vertical">
-                <big-button label-text="Large" cc="10" off-value="0" on-value="127"></big-button>
-                <big-knob label-text="Large Three" cc="71" min-value="20" max-value="127"></big-knob>
+                <lfo-box label-text="LFO 1" wave-cc="73" rate-cc="85" waves="Saw Triangle Square S/H" wave-vals="0 85 43 127"></lfo-box>
+                <mid-button label-text="Middling" cc="11" off-value="0" active-value="68"></mid-button>
+                <mid-button label-text="Middling" cc="11" off-value="0" active-value="62"></mid-button>
+                <micro-button label-text="Middling" cc="11" off-value="0" active-value="69"></micro-button>
+                <micro-button label-text="Middling" cc="11" off-value="0" active-value="61"></micro-button>
             </ui-col>    
             <ui-col direction="vertical"> 
                 <big-knob label-text="Large Four" cc="72" min-value="20" max-value="127"></big-knob>
                 <big-knob label-text="Large Two" cc="73" min-value="20" max-value="127"></big-knob>
+                <btn-group label-text="Filter Modes" button-cc="107" buttons="24LPF 12LPF 12BPF 12HPF" button-vals="0 85 43 127"></btn-group>
             </ui-col>    
             <ui-col>    
                 <ui-row label="Filter">
@@ -63,24 +71,31 @@
                     <mid-knob label-text="Medium Seventeen" cc="90" min-value="20" max-value="50"></mid-knob>
                     <mid-knob label-text="Medium Longer still" cc="91" min-value="20" max-value="50"></mid-knob>
                 </ui-row>
+                <adsr-env label-text="Amp2" adsr-cc="38 39 40 41" min-value="0" max-value="127"></adsr-env>
             </ui-col> 
             <ui-col>
+                <big-knob label-text="Large Two" cc="73" min-value="20" max-value="127"></big-knob>
                 <micro-knob id="micro" label-text="Micro" cc="88" min-value="0" max-value="127"></micro-knob>
-                <adsr-env adsr-cc="30 31 32 33" min-value="0" max-value="127"></adsr-env>
+                <micro-knob id="micro" label-text="Micro" cc="88" min-value="0" max-value="127"></micro-knob>
+                <micro-knob id="micro" label-text="Micro" cc="88" min-value="0" max-value="127"></micro-knob>
+                <adsr-env label-text="Amp" adsr-cc="30 31 32 33" min-value="0" max-value="127"></adsr-env>
+                <micro-button label-text="Middling" cc="11" off-value="0" active-value="64"></micro-button>
+                <micro-button label-text="Middling" cc="11" off-value="0" active-value="64"></micro-button>
+                <micro-button label-text="Middling" cc="11" off-value="0" active-value="64"></micro-button>
             </ui-col> 
         </ui-row>
         <ui-row>
-            <ui-col label="Amp 1">
-                <adsr-env adsr-cc="34 35 36 37" min-value="0" max-value="127"></adsr-env>
+            <ui-col>
+                <adsr-env label-text="Amp1" adsr-cc="34 35 36 37" min-value="0" max-value="127"></adsr-env>
             </ui-col>
-            <ui-col label="Amp 2">
-                <adsr-env adsr-cc="38 39 40 41" min-value="0" max-value="127"></adsr-env>
+            <ui-col>
+                <adsr-env label-text="Amp2" adsr-cc="38 39 40 41" min-value="0" max-value="127"></adsr-env>
             </ui-col>
-            <ui-col label="Filter 1">
-                <adsr-env adsr-cc="42 43 44 45" min-value="0" max-value="127"></adsr-env>
+            <ui-col>
+                <adsr-env label-text="Amp3" adsr-cc="42 43 44 45" min-value="0" max-value="127"></adsr-env>
             </ui-col>
-            <ui-col label="Filter 2">
-                <adsr-env adsr-cc="46 47 48 49" min-value="0" max-value="127"></adsr-env>
+            <ui-col>
+                <adsr-env label-text="Amp4" adsr-cc="46 47 48 49" min-value="0" max-value="127"></adsr-env>
             </ui-col>
         </ui-row>
         <script src="js/vendor/jquery-1.11.2.js"></script>

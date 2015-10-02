@@ -9,15 +9,21 @@
         <style>
             /* CSS rules for your element */
             :host{
-                display: inline-block;
-            }
+                display: block;
+                min-width: 140px;
+                max-width: 250px;
+                margin: 15px auto;
 
+            }
             [micro-knob]{
                 display: flex;
             }
-
-            #envelope {
-                fill: lightgrey;
+            .adsrLabel{
+                display: block;
+                text-align: center;
+                border-bottom: 2px rgba(41,41,41,0.4) solid;
+                padding-bottom: 5px;
+                margin-bottom: 7px;
             }
 
             section {
@@ -27,7 +33,7 @@
             }
         </style>
         <template>  
-            <svg id="envelope" width="150" height="50" fill="#0f0f0f"></svg>
+            <label class="adsrLabel">{{labelText}}</label>
             <section>
                 <micro-knob id="attack" label-text="A" control-value="{{_attackValue}}" cc="{{_attackCC}}" min-value="{{minValue}}" max-value="{{maxValue}}"></micro-knob>
                 <micro-knob id="decay" label-text="D" control-value="{{_decayValue}}" cc="{{_decayCC}}" min-value="{{minValue}}" max-value="{{maxValue}}"></micro-knob>
@@ -113,7 +119,6 @@
                 this.controlValue = Math.round(this.maxValue * decimal);
             },
             ready: function () {
-                this.chart = this.$$('#envelope');
                 var vals = this.adsrCc.split(' ').map(Number);
                 this._attackCC = vals[0];
                 this._decayCC = vals[1];

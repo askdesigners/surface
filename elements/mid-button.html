@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="../bower_components/polymer/polymer.html" rel="import">
+    </head>
+
+    <dom-module id="mid-button">
+        <style>
+        :host {
+            margin: 0 auto;
+            display: block;
+        }
+        .midbuttonWrapper{
+            box-sizing: border-box;
+            max-width: 150px;
+            min-width: 100px;
+            height: 30px;
+        }
+        .midbuttonWrapper.pressed #mid-button-top{
+            fill: #D1D1D1;
+        }
+        .midbuttonWrapper.on #mid-button-led{
+            fill: #B3FF68;
+            transition: fill 0.2s;
+        }
+        .midbuttonLabel {
+            text-align: left;
+            display: inline-block;
+            font-size: 1em;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 400;
+            line-height: 25px;
+            top: -6px;
+            position: relative;
+        }
+        </style>
+        <template>
+            <div class="midbuttonWrapper">
+                <svg width="50px" height="24px" viewBox="0 0 49 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <defs>
+                        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="mid-button-filter-1">
+                            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetInner1"></feOffset>
+                            <feGaussianBlur stdDeviation="1" in="shadowOffsetInner1" result="shadowBlurInner1"></feGaussianBlur>
+                            <feComposite in="shadowBlurInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+                            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.35 0" in="shadowInnerInner1" type="matrix" result="shadowMatrixInner1"></feColorMatrix>
+                            <feMerge>
+                                <feMergeNode in="SourceGraphic"></feMergeNode>
+                                <feMergeNode in="shadowMatrixInner1"></feMergeNode>
+                            </feMerge>
+                        </filter>
+                        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="mid-button-filter-2">
+                            <feOffset dx="-1" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+                            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+                            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.35 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
+                            <feMerge>
+                                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                                <feMergeNode in="SourceGraphic"></feMergeNode>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <g id="mid-button">
+                        <rect id="mid-button-bottom" fill="rgba(115,115,115,0.2)" filter="url(#mid-button-filter-1)" x="0" y="0" width="48" height="24" rx="4"></rect>
+                        <rect id="mid-button-top" fill="#D8D8D8" filter="url(#mid-button-filter-2)" x="2" y="1" width="44" height="21" rx="2"></rect>
+                        <rect id="mid-button-led" fill="#9C9C9C" filter="url(#mid-button-filter-1)" x="11" y="8" width="26" height="7"></rect>
+                    </g>
+                </svg>
+                <label class="midbuttonLabel">{{labelText}}</label>
+            </div>
+        </template>
+    </dom-module>
+    <script>
+        Polymer({
+            is: "mid-button",
+            properties: {
+                labelText: {
+                    type: String,
+                    value: ""   
+                },
+                cc: {
+                    type: Number,
+                    value: 0
+                },
+                offValue: {
+                    type: Number,
+                    value: 0
+                },
+                activeValue: {
+                    type: Number,
+                    value: 127
+                },
+                controlValue: {
+                    type: Number,
+                    value: 0
+                },
+                _toggleState: {
+                    type: Boolean,
+                    value: false
+                }
+            },
+            listeners: {
+                mousedown: 'pressButton',
+                mouseup: 'changeToggle'
+            },
+            pressButton: function () {
+                this.wrapper.className = this.wrapper.classList + ' pressed';
+            },
+            changeToggle: function(){
+                this.wrapper.classList.remove('pressed');
+                this._toggleState = !this._toggleState;
+                
+                if (this._toggleState){
+                    this.wrapper.className = this.wrapper.classList + ' on';
+                } else {
+                    this.wrapper.classList.remove('on');
+                }
+                this.sendValue(this._toggleState);
+            },
+            sendValue:function (isOn) {
+                if(isOn){
+                    this.controlValue = this.activeValue
+                }else{
+                    this.controlValue = this.offValue
+                }
+                this.fire('sendMidiMessage', {val: this.controlValue, cc: this.cc});
+            },
+            attached: function () {
+                this.element = this.$$('#mid-button');
+                this.wrapper = this.$$('.midbuttonWrapper');
+            }
+        });
+    </script>
+</html>

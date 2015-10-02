@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="../bower_components/polymer/polymer.html" rel="import">
+        <link href="micro-button.html" rel="import">
+    </head>
+
+    <dom-module id="btn-group">
+        <style>
+            /* CSS rules for your element */
+            :host{
+                display: block;
+                min-width: 90px;
+                max-width: 120px;
+                background: rgba(216,216,216,.5);
+                padding: 10px;
+                margin-bottom: 20px;
+                border-radius: 5px;
+                box-sizing: border-box;
+            }
+            micro-button{
+                margin-bottom: 3px;
+            }
+            .grpLabel{
+                display: block;
+                text-align: center;
+                border-bottom: 2px rgba(41,41,41,0.4) solid;
+                padding-bottom: 5px;
+                margin-bottom: 7px;
+            }
+        </style>
+        <template>  
+            <label class="grpLabel">{{labelText}}</label>
+            <section id="buttonGroup">
+                <template is="dom-repeat" items="{{buttonList}}" as="button">
+                  <micro-button cc="{{buttonCc}}" active-value="{{button.val}}" label-text="{{button.name}}"></micro-button>
+                </template>
+            </section>
+        </template>
+    </dom-module>
+    <script>
+        Polymer({
+            is: "btn-group",
+            properties: {
+                labelText: {
+                    type: String,
+                    value: ""   
+                },
+                buttons: {
+                    type: String,
+                    value: ''
+                },
+                buttonVals: {
+                    type: String,
+                    value: ''
+                },
+                buttonCc: {
+                    type: Number,
+                    value: 0
+                },
+                buttonList: {
+                    type: Array,
+                    value: []
+                }
+            },
+            listeners:{
+                notifyGroup: '_resetButtons'
+            },
+            _resetButtons: function (elem) {
+                for (var i = this.buttonButtons.length - 1; i >= 0; i--) {
+                    this.buttonButtons[i].turnOff(elem.detail)
+                };
+            },
+            ready: function () {
+                var w = this.buttons.split(' ');
+                var v = this.buttonVals.split(' ');
+                if(w.length != v.length){
+                    console.error('The number buttons and number of values for the Group -' + this.labelText + ' are not the same. Expect madness.')
+                } else {
+                    for (var i = w.length - 1; i >= 0; i--) {
+                        var temp = { name:w[i], val:parseInt(v[i], 10) };
+                        this.push('buttonList', temp);
+                    };
+                }
+            },
+            attached: function (argument) {
+                this.buttonButtons = this.querySelectorAll('micro-button');
+            }
+        });
+    </script>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="../bower_components/polymer/polymer.html" rel="import">
+        <link href="micro-button.html" rel="import">
+        <link href="mid-knob.html" rel="import">
+    </head>
+
+    <dom-module id="lfo-box">
+        <style>
+            /* CSS rules for your element */
+            :host{
+                display: block;
+                min-width: 90px;
+                max-width: 120px;
+                background: rgba(216,216,216,.5);
+                padding: 10px;
+                margin-bottom: 20px;
+                border-radius: 5px;
+                box-sizing: border-box;
+            }
+            #lfoKnob{
+                margin: 0 10px;
+                display: inline-block;
+            }
+            micro-button{
+                margin-bottom: 3px;
+            }
+            svg {
+                display: inline-block;
+            }
+            .lfoLabel{
+                display: block;
+                text-align: center;
+                border-bottom: 2px rgba(41,41,41,0.4) solid;
+                padding-bottom: 5px;
+                margin-bottom: 7px;
+            }
+        </style>
+        <template>  
+            <label class="lfoLabel">{{labelText}}</label>
+            <section id="lfoControls">
+                <template is="dom-repeat" items="{{waveList}}" as="wave">
+                  <micro-button cc="{{waveCc}}" active-value="{{wave.val}}" label-text="{{wave.name}}"></micro-button>
+                </template>
+                <mid-knob id="lfoKnob" label-text="Rate" cc="{{rateCc}}" min-value="{{minVal}}" max-value="{{maxVal}}"></mid-knob>
+            </section>
+        </template>
+    </dom-module>
+    <script>
+        Polymer({
+            is: "lfo-box",
+            properties: {
+                labelText: {
+                    type: String,
+                    value: ""   
+                },
+                waves: {
+                    type: String,
+                    value: ''
+                },
+                waveVals: {
+                    type: String,
+                    value: ''
+                },
+                waveCc: {
+                    type: Number,
+                    value: 0
+                },
+                rateCc: {
+                    type: Number,
+                    value: 0
+                },
+                minVal: {
+                    type: Number,
+                    value: 0
+                },
+                maxVal: {
+                    type: Number,
+                    value: 127
+                },
+                waveList: {
+                    type: Array,
+                    value: []
+                }
+            },
+            listeners:{
+                notifyGroup: '_resetButtons'
+            },
+            _resetButtons: function (elem) {
+                for (var i = this.waveButtons.length - 1; i >= 0; i--) {
+                    this.waveButtons[i].turnOff(elem.detail)
+                };
+            },
+            ready: function () {
+                var w = this.waves.split(' ');
+                var v = this.waveVals.split(' ');
+                if(w.length != v.length){
+                    console.error('The number waves and values for the LFO -' + this.labelText + ' are not the same. Expect madness.')
+                } else {
+                    for (var i = w.length - 1; i >= 0; i--) {
+                        var temp = { name:w[i], val:parseInt(v[i], 10) };
+                        this.push('waveList', temp);
+                    };
+                }
+            },
+            attached: function (argument) {
+                this.waveButtons = this.querySelectorAll('micro-button');
+            }
+        });
+    </script>
+</html>

@@ -1,0 +1,25 @@
+<!-- 
+    button clicking
+    return a true or false to indicate state 
+-->
+
+<script>
+    clickEventer = {
+
+        listeners: {
+          mousedown: '_downClick',
+          mouseup: '_upClick'
+        },
+        _toggleState: false,
+        ready: function () {
+        },
+        _downClick:function(e){
+            console.log(e);
+            this.fire('broadcastPressState');
+        },
+        _upClick:function(e){
+            this._toggleState = !this._toggleState;
+            this.fire('broadcastToggleState', this._toggleState);
+        }
+    };
+</script>

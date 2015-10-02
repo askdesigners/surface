@@ -57,7 +57,9 @@ Surface.prototype = {
 
     send: function (m) {
         // http://www.blitter.com/~russtopia/MIDI/~jglatt/tech/midispec/ctl.htm
-        this.surface.output.send([177, m.cc, m.val]);
+        if(this.surface.outputs.length !== 0){
+            this.surface.output.send([177, m.cc, m.val]);
+        }
     },
 
     setOutput: function (id) {

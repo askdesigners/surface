@@ -1,4 +1,4 @@
-function UI(Surface){
+    function UI(Surface){
     var self = this;
     this.$outputSel = $('#output'),
     this.$logger = $('#logger'),
@@ -36,13 +36,17 @@ UI.prototype = {
             self.surface.setOutput(sel.val());
         });
 
-        self.surface.setOutput(self.surface.outputs[0].id);
+        if(self.surface.outputs.length !== 0){
+            self.surface.setOutput(self.surface.outputs[0].id);
+        } else {
+            $('#controls').empty().append('<div class="outputError">No Midi output device! Connect one and refresh this page</div>');
+        }
 
         this.buildSelects();
 
         $(document).on('sendMidiMessage', function (e) {
             self.surface.callRecievers(e.originalEvent.detail)
-            // console.log(e.originalEvent.detail);
+            console.log(e.originalEvent.detail);
         });
     },
 

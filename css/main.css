@@ -4,10 +4,12 @@
 body {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
-    color: #5B5B5B;
+    /*color: white;*/
+    color: rgba(41,41,41,0.8);
     -webkit-user-select: none;
     padding: 20px 70px;
     font-size: 16px;
+    background-color: #61A7ED;
 }
 
 nav {
@@ -26,8 +28,28 @@ nav h1 {
 #controls {
     display: inline-block;
     float: right;
+    text-align: right;
 }
 
 #controls .selectedDevice {
     display: inline-block;
+}
+
+#controls label{
+    margin-left: 20px;
+}
+
+#controls select {
+    padding: 6px;
+    text-align: center;
+    margin-left: 4px;
+    border: none;
+    outline: none;
+    display: inline-block;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    background-color: rgba(41,41,41,0.4);
+    color: lightgrey;
 }

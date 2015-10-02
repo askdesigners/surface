@@ -67,7 +67,7 @@
                             <mask id="midknob-mask-3" fill="white">
                                 <use xlink:href="#midknob-path-2"></use>
                             </mask>
-                            <use id="midknob-outermask" fill="white" filter="url(#midknob-filter-1)" xlink:href="#midknob-path-2"></use>
+                            <use id="midknob-outermask" fill="rgba(115,115,115,0.4)" filter="url(#midknob-filter-1)" xlink:href="#midknob-path-2"></use>
                             <path d="M30,10 L45.5,27.5 L27,43.5 L8,27.5 L30,10 Z" id="shadow" fill="url(#midknob-linearGradient-4)" mask="url(#midknob-mask-3)"></path>
                         </g>
                         <g id="midknob-knob">
@@ -158,8 +158,6 @@
             },
             ready: function () {
                 this.element = this.$$('#midknob-knob');
-                this.direction = this.parentNode.parentNode.direction;
-                this.setAttribute("class", this.direction);
             }
         });
     </script>
