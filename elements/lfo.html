@@ -10,12 +10,12 @@
         <style>
             /* CSS rules for your element */
             :host{
-                display: block;
+                display: inline-block;
                 min-width: 90px;
                 max-width: 120px;
                 background: rgba(216,216,216,.5);
                 padding: 10px;
-                margin-bottom: 20px;
+                margin: 0 auto 20px auto;
                 border-radius: 5px;
                 box-sizing: border-box;
             }
@@ -95,6 +95,7 @@
             ready: function () {
                 var w = this.waves.split(' ');
                 var v = this.waveVals.split(' ');
+                this.waveList = [];
                 if(w.length != v.length){
                     console.error('The number waves and values for the LFO -' + this.labelText + ' are not the same. Expect madness.')
                 } else {

@@ -1,0 +1,24 @@
+{
+    "surfaces":[
+        {
+            "title":"Korg MS2000",
+            "template": "ms2000.html",
+            "css": "ms2000.css"
+        },
+        {
+            "title":"Preen FM",
+            "template": "preenfm.html",
+            "css": "preenfm.css"
+        },
+        {
+            "title":"Roland D-110",
+            "template": "d110.html",
+            "css": "d110.css"
+        },
+        {
+            "title":"Novation Nova",
+            "template": "novation-nova.html",
+            "css": "novation-nova.css"
+        }
+    ]
+}

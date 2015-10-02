@@ -14,9 +14,17 @@
                 max-width: 120px;
                 background: rgba(216,216,216,.5);
                 padding: 10px;
-                margin-bottom: 20px;
+                margin: 0 auto 20px auto;
                 border-radius: 5px;
                 box-sizing: border-box;
+            }
+            :host.wide{
+                max-width: 300px;
+            }
+            :host.wide micro-button{
+                display: inline-block;
+            }
+            micro-button.wide {
             }
             micro-button{
                 margin-bottom: 3px;
@@ -61,6 +69,10 @@
                 buttonList: {
                     type: Array,
                     value: []
+                },
+                size: {
+                    type: String,
+                    value: ""   
                 }
             },
             listeners:{
@@ -74,6 +86,7 @@
             ready: function () {
                 var w = this.buttons.split(' ');
                 var v = this.buttonVals.split(' ');
+                this.buttonList = [];
                 if(w.length != v.length){
                     console.error('The number buttons and number of values for the Group -' + this.labelText + ' are not the same. Expect madness.')
                 } else {
@@ -81,10 +94,17 @@
                         var temp = { name:w[i], val:parseInt(v[i], 10) };
                         this.push('buttonList', temp);
                     };
+                    console.log(this.buttonList);
                 }
             },
             attached: function (argument) {
                 this.buttonButtons = this.querySelectorAll('micro-button');
+                if(this.size == 'wide'){
+                    this.className += ' wide';
+                }
+                for (var i = this.buttonButtons.length - 1; i >= 0; i--) {
+                    this.buttonButtons[i].className += ' wide';
+                }
             }
         });
     </script>

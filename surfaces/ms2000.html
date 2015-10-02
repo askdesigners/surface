@@ -1,0 +1,81 @@
+<ui-row>
+    <ui-col label="Osc 1">
+        <btn-group label-text="Wave" size="wide" button-cc="107" buttons="Saw Square Triangle Sine Vox DWGS Noise Audio-in" button-vals="0 85 43 127 0 85 43 127"></btn-group>
+        <micro-knob label-text="Ctrl 1" cc="89" min-value="20" max-value="50"></micro-knob>
+        <micro-knob label-text="Ctrl 2" cc="89" min-value="20" max-value="50"></micro-knob>
+    </ui-col>
+    <ui-col label="Osc 2">
+        <btn-group label-text="Wave" button-cc="107" buttons="Saw Square Triangle" button-vals="0 85 43"></btn-group>
+        <btn-group label-text="Osc Mode" button-cc="107" buttons="Ring Sync" button-vals="0 85"></btn-group>
+        <micro-knob label-text="Semitone" cc="89" min-value="20" max-value="50"></micro-knob>
+        <micro-knob label-text="Tune" cc="89" min-value="20" max-value="50"></micro-knob>
+    </ui-col>
+    <ui-col label="Mixer" direction="vertical">
+        <mid-knob label-text="Osc 1" cc="89" min-value="20" max-value="50"></mid-knob>
+        <mid-knob label-text="Osc 2" cc="89" min-value="20" max-value="50"></mid-knob>
+        <mid-knob label-text="Noise" cc="89" min-value="20" max-value="50"></mid-knob>
+    </ui-col>
+    <ui-col label="Filter" direction="vertical">
+        <big-knob label-text="Cutoff" cc="89" min-value="20" max-value="50"></big-knob>
+        <mid-knob label-text="Resonance" cc="89" min-value="20" max-value="50"></mid-knob>
+        <micro-knob label-text="EG 1 Int" cc="88" min-value="0" max-value="127"></micro-knob>
+        <micro-knob label-text="KBD Track" cc="88" min-value="0" max-value="127"></micro-knob>
+    </ui-col>
+    <ui-col label="Amp" direction="vertical">
+        <mid-knob label-text="Level" cc="89" min-value="20" max-value="50"></mid-knob>
+        <mid-knob label-text="Pan" cc="89" min-value="20" max-value="50"></mid-knob>
+        <big-button label-text="EG 2 / Gate" cc="11" off-value="0" active-value="62"></big-button>
+        <big-button label-text="Distortion" cc="11" off-value="0" active-value="62"></big-button>
+    </ui-col>
+</ui-row>
+<ui-row>
+    <ui-col label="Arpeggiator"> 
+        <mid-knob label-text="Tempo" cc="89" min-value="20" max-value="50"></mid-knob>
+        <mid-knob label-text="Gate" cc="89" min-value="20" max-value="50"></mid-knob>
+        <mid-button label-text="On/Off" cc="11" off-value="0" active-value="69"></mid-button>
+        <micro-button label-text="Latch" cc="11" off-value="0" active-value="69"></micro-button>
+        <btn-group label-text="Range" size="wide" button-cc="107" buttons="1 2 3 4" button-vals="0 85 12 14"></btn-group>
+        <btn-group label-text="Type" size="wide" button-cc="107" buttons="Up Down Alt1 Alt2 Random Trigger" button-vals="0 85 0 85 0 85"></btn-group>
+    </ui-col>    
+    <ui-col direction="vertical" label="Mod Seq">
+        <big-button label-text="On/Off" cc="11" off-value="0" active-value="68"></big-button>
+        <mid-button label-text="Rec" cc="11" off-value="0" active-value="68"></mid-button>
+        <mid-knob label-text="Portamento" cc="89" min-value="20" max-value="50"></mid-knob>
+    </ui-col>
+    <ui-col>
+        <lfo-box label-text="LFO 1" wave-cc="73" rate-cc="85" waves="Saw Square Triangle S/H" wave-vals="0 85 43 127"></lfo-box>
+        <lfo-box label-text="LFO 2" wave-cc="73" rate-cc="85" waves="Saw Square Sine S/H" wave-vals="0 85 43 127"></lfo-box>
+    </ui-col>
+    <ui-col direction="vertical" label="Effects">
+        <ui-col direction="vertical" label="Modulation">
+            <mid-knob label-text="Speed" cc="88" min-value="20" max-value="50"></mid-knob>
+            <mid-knob label-text="Depth" cc="88" min-value="20" max-value="50"></mid-knob>
+        </ui-col>
+        <ui-col direction="vertical" label="Delay">
+            <mid-knob label-text="Time" cc="88" min-value="20" max-value="50"></mid-knob>
+            <mid-knob label-text="Feedback" cc="88" min-value="20" max-value="50"></mid-knob>
+        </ui-col>
+    </ui-col>
+</ui-row>
+<ui-row>
+    <ui-col direction="vertical" label="Virtual Patch1">
+        <btn-group label-text="Source" size="wide" button-cc="107" buttons="EG1 EG2 LFO1 LFO2 Vel Kbd Midi1 Midi2" button-vals="0 85 0 85 0 85 0 85"></btn-group>
+        <mid-knob label-text="Amount" cc="88" min-value="20" max-value="50"></mid-knob>
+        <btn-group label-text="Destination" size="wide" button-cc="107" buttons="Pitch Osc2-Pitch Osc2-Ctrl1 Noise Cutoff Amp Pan LFO2-Freq" button-vals="0 85 0 85 0 85 0 85"></btn-group>
+    </ui-col>
+    <ui-col direction="vertical" label="Virtual Patch2">
+        <btn-group label-text="Source" size="wide" button-cc="107" buttons="EG1 EG2 LFO1 LFO2 Vel Kbd Midi1 Midi2" button-vals="0 85 0 85 0 85 0 85"></btn-group>
+        <mid-knob label-text="Amount" cc="88" min-value="20" max-value="50"></mid-knob>
+        <btn-group label-text="Destination" size="wide" button-cc="107" buttons="Pitch Osc2-Pitch Osc2-Ctrl1 Noise Cutoff Amp Pan LFO2-Freq" button-vals="0 85 0 85 0 85 0 85"></btn-group>
+    </ui-col>
+    <ui-col direction="vertical" label="Virtual Patch3">
+        <btn-group label-text="Source" size="wide" button-cc="107" buttons="EG1 EG2 LFO1 LFO2 Vel Kbd Midi1 Midi2" button-vals="0 85 0 85 0 85 0 85"></btn-group>
+        <mid-knob label-text="Amount" cc="88" min-value="20" max-value="50"></mid-knob>
+        <btn-group label-text="Destination" size="wide" button-cc="107" buttons="Pitch Osc2-Pitch Osc2-Ctrl1 Noise Cutoff Amp Pan LFO2-Freq" button-vals="0 85 0 85 0 85 0 85"></btn-group>
+    </ui-col>
+    <ui-col direction="vertical" label="Virtual Patch4">
+        <btn-group label-text="Source" size="wide" button-cc="107" buttons="EG1 EG2 LFO1 LFO2 Vel Kbd Midi1 Midi2" button-vals="0 85 0 85 0 85 0 85"></btn-group>
+        <mid-knob label-text="Amount" cc="88" min-value="20" max-value="50"></mid-knob>
+        <btn-group label-text="Destination" size="wide" button-cc="107" buttons="Pitch Osc2-Pitch Osc2-Ctrl1 Noise Cutoff Amp Pan LFO2-Freq" button-vals="0 85 0 85 0 85 0 85"></btn-group>
+    </ui-col>
+</ui-row>
