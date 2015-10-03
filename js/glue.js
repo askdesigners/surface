@@ -42,7 +42,6 @@ UI.prototype = {
             self.surfaceList = d.surfaces;
             
             for (var i = surfaces.length - 1; i >= 0; i--) {
-                console.log(surfaces[i]);
                 $('<option>')
                     .attr('value', surfaces[i].template)
                     .attr('data-theme', surfaces[i].css)
@@ -62,7 +61,7 @@ UI.prototype = {
 
         this.$outputSel.on('change', function(){
             var sel = $(this);
-            self.$curOut.html(sel.html());
+            // self.$curOut.html(sel.html());
             self.surface.setOutput(sel.val());
         });
 
@@ -82,7 +81,7 @@ UI.prototype = {
         this.buildSurfaceSelects();
 
         $(document).on('sendMidiMessage', function (e) {
-            self.surface.callRecievers(e.originalEvent.detail)
+            self.surface.callRecievers(e.originalEvent.detail);
             console.log(e.originalEvent.detail);
         });
     },
