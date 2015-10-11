@@ -10,6 +10,7 @@
             margin: 0 auto;
             display: block;
             max-width: 150px;
+            flex-grow: 1;
         }
         .microbuttonWrapper{
             box-sizing: border-box;
@@ -52,7 +53,7 @@
                         <rect x="0" y="0" width="26" height="9"></rect>
                     </g>
                 </svg>
-                <label class="microbuttonLabel">{{labelText}}</label>
+                <label class="microbuttonLabel">{{label}}</label>
             </div>
         </template>
     </dom-module>
@@ -60,7 +61,7 @@
         Polymer({
             is: "micro-button",
             properties: {
-                labelText: {
+                label: {
                     type: String,
                     value: ""   
                 },
@@ -68,7 +69,7 @@
                     type: Number,
                     value: 0
                 },
-                offValue: {
+                inactiveValue: {
                     type: Number,
                     value: null
                 },
@@ -112,7 +113,7 @@
                 this.sendValue(this._toggleState);
             },
             sendValue:function (isOn) {
-                this.controlValue = isOn ? this.activeValue : this.offValue
+                this.controlValue = isOn ? this.activeValue : this.inactiveValue
                 if(this.controlValue !== null){
                     this.fire('sendMidiMessage', {val: this.controlValue, cc: this.cc});
                 }

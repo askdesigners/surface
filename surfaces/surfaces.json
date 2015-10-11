@@ -19,6 +19,11 @@
             "title":"Novation Nova",
             "template": "novation-nova.html",
             "css": "novation-nova.css"
+        },
+        {
+            "title":"Shruthi 1",
+            "template": "shruthi1.html",
+            "css": "shruthi1.css"
         }
     ]
 }

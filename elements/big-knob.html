@@ -10,6 +10,7 @@
         :host {
             margin: 0 auto;
             display: inline-block;
+            flex-grow: 2;
         }
         :host.vertical {
             display: block;
@@ -74,7 +75,7 @@
                         </g>
                     </g>
                 </svg>
-                <label class="bigknobLabel">{{labelText}}</label>
+                <label class="bigknobLabel">{{label}}</label>
             </div>
         </template>
     </dom-module>
@@ -83,7 +84,7 @@
             is: "big-knob",
             behaviors: [dragEventer],
             properties: {
-                labelText: {
+                label: {
                     type: String,
                     value: ""   
                 },
@@ -91,11 +92,11 @@
                     type: Number,
                     value: 0
                 },
-                minValue: {
+                min: {
                     type: Number,
                     value: 0
                 },
-                maxValue: {
+                max: {
                     type: Number,
                     value: 127
                 },
@@ -151,7 +152,7 @@
                 this.element.setAttribute('transform','rotate('+ (this._currentRot) +' 38 38)');
             },
             mapValue:function (decimal) {
-                this.controlValue = Math.round(this.maxValue * decimal);
+                this.controlValue = Math.round(this.max * decimal);
             },
             ready: function () {
             },

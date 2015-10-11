@@ -13,7 +13,7 @@
                 display: inline-block;
                 min-width: 90px;
                 max-width: 120px;
-                background: rgba(216,216,216,.5);
+                background: rgba(216,216,216,.2);
                 padding: 10px;
                 margin: 0 auto 20px auto;
                 border-radius: 5px;
@@ -38,12 +38,12 @@
             }
         </style>
         <template>  
-            <label class="lfoLabel">{{labelText}}</label>
+            <label class="lfoLabel">{{label}}</label>
             <section id="lfoControls">
                 <template is="dom-repeat" items="{{waveList}}" as="wave">
-                  <micro-button cc="{{waveCc}}" active-value="{{wave.val}}" label-text="{{wave.name}}"></micro-button>
+                  <micro-button cc="{{waveCc}}" active-value="{{wave.val}}" label="{{wave.name}}"></micro-button>
                 </template>
-                <mid-knob id="lfoKnob" label-text="Rate" cc="{{rateCc}}" min-value="{{minVal}}" max-value="{{maxVal}}"></mid-knob>
+                <mid-knob id="lfoKnob" label="Rate" cc="{{rateCc}}" min="{{min}}" max="{{max}}"></mid-knob>
             </section>
         </template>
     </dom-module>
@@ -51,7 +51,7 @@
         Polymer({
             is: "lfo-box",
             properties: {
-                labelText: {
+                label: {
                     type: String,
                     value: ""   
                 },
@@ -71,11 +71,11 @@
                     type: Number,
                     value: 0
                 },
-                minVal: {
+                min: {
                     type: Number,
                     value: 0
                 },
-                maxVal: {
+                max: {
                     type: Number,
                     value: 127
                 },
@@ -97,7 +97,7 @@
                 var v = this.waveVals.split(' ');
                 this.waveList = [];
                 if(w.length != v.length){
-                    console.error('The number waves and values for the LFO -' + this.labelText + ' are not the same. Expect madness.')
+                    console.error('The number waves and values for the LFO -' + this.label + ' are not the same. Expect madness.')
                 } else {
                     for (var i = w.length - 1; i >= 0; i--) {
                         var temp = { name:w[i], val:parseInt(v[i], 10) };

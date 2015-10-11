@@ -1,0 +1,62 @@
+<ui-row>
+    <ui-col direction="vertical" label="Osc 1">
+        <ui-row>
+            <mid-knob label="Shape" cc="20"></mid-knob>
+            <mid-knob label="Param" cc="21"></mid-knob>
+            <mid-knob label="Range" cc="22"></mid-knob>
+            <mid-knob label="Mod. Op." cc="28"></mid-knob>
+        </ui-row>
+    </ui-col>
+    <ui-col direction="vertical" label="Osc 2">
+        <ui-row>
+            <mid-knob label="Shape" cc="24"></mid-knob>
+            <mid-knob label="Param" cc="25"></mid-knob>
+            <mid-knob label="Range" cc="26"></mid-knob>
+            <mid-knob label="Detune" cc="27"></mid-knob>
+        </ui-row>
+    </ui-col>
+    <ui-col direction="vertical" label="Mix">
+        <ui-row>
+            <mid-knob label="Osc Balance" cc="29"></mid-knob>
+            <mid-knob label="Sub Osc" cc="30"></mid-knob>
+            <mid-knob label="Noise" cc="31"></mid-knob>
+            <mid-knob label="Sub Osc Shape" cc="23"></mid-knob>
+        </ui-row>
+    </ui-col>
+</ui-row>
+<ui-row>
+    <ui-col label="Filter">
+        <big-knob label="Cutoff" cc="14"></big-knob>
+        <mid-knob label="Reso." cc="15"></mid-knob>
+        <ui-row>
+            <micro-knob label="Env. Cutoff" cc="102"></micro-knob>
+            <micro-knob label="LFO Cutoff" cc="103"></micro-knob>
+        </ui-row>
+    </ui-col>
+    <ui-col label="Envelopes">
+        <adsr-env label="Env. 1" cc="104 105 106 107"></adsr-env>
+        <adsr-env label="Env. 2" cc="108 109 110 111"></adsr-env>
+    </ui-col>
+    <ui-col>
+        <ui-col direction="vertical" label="LFO 1">
+            <ui-row>
+                <mid-knob label="Waveform" cc="112"></mid-knob>
+                <mid-knob label="Rate" cc="113"></mid-knob>
+                <ui-col>
+                    <micro-knob label="Rise" cc="114"></micro-knob>
+                    <mid-button label="Master/Slave" cc="115"></mid-button>
+                </ui-col>
+            </ui-row>
+        </ui-col>
+        <ui-col direction="vertical" label="LFO 2">
+            <ui-row>
+                <mid-knob label="Waveform" cc="116"></mid-knob>
+                <mid-knob label="Rate" cc="117"></mid-knob>
+                <ui-col>
+                    <micro-knob label="Rise" cc="118"></micro-knob>
+                    <mid-button label="Master/Slave" cc="119"></mid-button>
+                </ui-col>
+            </ui-row>
+        </ui-col>
+    </ui-col>
+</ui-row>

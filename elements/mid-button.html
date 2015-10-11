@@ -9,7 +9,8 @@
         :host {
             margin: 0 auto;
             display: block;
-            max-width: 150px;
+            /*max-width: 150px;*/
+            flex-grow: 1;
         }
         .midbuttonWrapper{
             box-sizing: border-box;
@@ -65,7 +66,7 @@
                         <rect id="mid-button-led" fill="#9C9C9C" filter="url(#mid-button-filter-1)" x="11" y="8" width="26" height="7"></rect>
                     </g>
                 </svg>
-                <label class="midbuttonLabel">{{labelText}}</label>
+                <label class="midbuttonLabel">{{label}}</label>
             </div>
         </template>
     </dom-module>
@@ -73,7 +74,7 @@
         Polymer({
             is: "mid-button",
             properties: {
-                labelText: {
+                label: {
                     type: String,
                     value: ""   
                 },
@@ -81,7 +82,7 @@
                     type: Number,
                     value: 0
                 },
-                offValue: {
+                inactiveValue: {
                     type: Number,
                     value: 0
                 },
@@ -120,7 +121,7 @@
                 if(isOn){
                     this.controlValue = this.activeValue
                 }else{
-                    this.controlValue = this.offValue
+                    this.controlValue = this.inactiveValue
                 }
                 this.fire('sendMidiMessage', {val: this.controlValue, cc: this.cc});
             },

@@ -11,6 +11,7 @@
             display: inline-block;
             font-family: 'Roboto Condensed', sans-serif;
             font-weight: 400;
+            flex-grow: 1;
         }
         :host svg{
             position: relative;
@@ -45,7 +46,7 @@
                     </g>
                 </svg>
             </div>
-            <label class="microknobLabel">{{labelText}}</label>
+            <label class="microknobLabel">{{label}}</label>
         </template>
     </dom-module>
     <script>
@@ -53,7 +54,7 @@
             is: "micro-knob",
             behaviors: [dragEventer],
             properties: {
-                labelText: {
+                label: {
                     type: String,
                     value: ""   
                 },
@@ -61,11 +62,11 @@
                     type: Number,
                     value: 0
                 },
-                minValue: {
+                min: {
                     type: Number,
                     value: 0
                 },
-                maxValue: {
+                max: {
                     type: Number,
                     value: 127
                 },
@@ -120,7 +121,7 @@
                 this.element.setAttribute('transform','rotate('+ (this._currentRot) +' 9.9 9.9)');
             },
             mapValue:function (decimal) {
-                this.controlValue = Math.round(this.maxValue * decimal);
+                this.controlValue = Math.round(this.max * decimal);
             },
             ready: function () {
                 this.element = this.$$('#microknob-knob');

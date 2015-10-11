@@ -8,7 +8,7 @@
         <style>
         :host {
             display: block;
-            background: rgba(216,216,216,.5);
+            background: rgba(216,216,216,0.7);
             padding: 10px;
             margin-bottom: 20px;
             border-radius: 5px;
@@ -16,8 +16,10 @@
         :host:last-child {
             margin-bottom: 0;
         }
-        ui-row {
-            padding: 0;
+        .rowContent ::content ui-row {
+            background: rgba(216,216,216,0.2);
+            padding: 10px 0;
+            margin-bottom: 20px;
         }
         .rowContent{
             display: flex;

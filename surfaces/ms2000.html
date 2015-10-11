@@ -1,59 +1,71 @@
 <ui-row>
     <ui-col label="Osc 1">
-        <btn-group label-text="Wave" size="wide" button-cc="77" buttons="Saw Square Triangle Sine Vox DWGS Noise Audio-in" button-vals="0 18 36 54 72 90 108 126"></btn-group>
-        <micro-knob label-text="Ctrl 1" cc="14"></micro-knob>
-        <micro-knob label-text="Ctrl 2" cc="15"></micro-knob>
+        <btn-group label="Wave" size="wide" button-cc="77" buttons="Saw Square Triangle Sine Vox DWGS Noise Audio-in" button-vals="0 18 36 54 72 90 108 126"></btn-group>
+        <ui-row>
+            <mid-knob label="Ctrl 1" cc="14"></mid-knob>
+            <mid-knob label="Ctrl 2" cc="15"></mid-knob>
+        </ui-row>
     </ui-col>
     <ui-col label="Osc 2">
-        <btn-group label-text="Wave" button-cc="78" buttons="Saw Square Triangle" button-vals="0 64 127"></btn-group>
-        <btn-group label-text="Osc Mod" button-cc="82" buttons="Off Ring Sync RingSync" button-vals="0 43 85 127"></btn-group>
-        <micro-knob label-text="Semitone" cc="18"></micro-knob>
-        <micro-knob label-text="Tune" cc="19"></micro-knob>
+        <btn-group label="Wave" size="wide" button-cc="78" buttons="Saw Square Triangle" button-vals="0 64 127"></btn-group>
+        <btn-group label="Osc Mod" size="wide" button-cc="82" buttons="Off Ring Sync RingSync" button-vals="0 43 85 127"></btn-group>
+        <ui-row>
+            <mid-knob label="Semitone" cc="18"></mid-knob>
+            <mid-knob label="Tune" cc="19"></mid-knob>
+        </ui-row>
     </ui-col>
     <ui-col label="Mixer" direction="vertical">
-        <mid-knob label-text="Osc 1" cc="20"></mid-knob>
-        <mid-knob label-text="Osc 2" cc="21"></mid-knob>
-        <mid-knob label-text="Noise" cc="22"></mid-knob>
+        <mid-knob label="Osc 1" cc="20"></mid-knob>
+        <mid-knob label="Osc 2" cc="21"></mid-knob>
+        <mid-knob label="Noise" cc="22"></mid-knob>
     </ui-col>
     <ui-col label="Filter" direction="vertical">
-        <big-knob label-text="Cutoff" cc="74"></big-knob>
-        <mid-knob label-text="Resonance" cc="71"></mid-knob>
-        <micro-knob label-text="EG 1 Int" cc="79"></micro-knob>
-        <micro-knob label-text="KBD Track" cc="85"></micro-knob>
-        <btn-group label-text="Type" button-cc="83" buttons="LPF24 LPF12 BPF12 HPF12" button-vals="0 43 85 127"></btn-group>
+        <btn-group label="Type" size="wide" button-cc="83" buttons="LPF24 LPF12 BPF12 HPF12" button-vals="0 43 85 127"></btn-group>
+        <ui-row>
+            <big-knob label="Cutoff" cc="74"></big-knob>
+            <mid-knob label="Resonance" cc="71"></mid-knob>
+        </ui-row>
+        <ui-row>
+            <micro-knob label="EG 1 Int" cc="79"></micro-knob>
+            <micro-knob label="KBD Track" cc="85"></micro-knob>
+        </ui-row>
     </ui-col>
     <ui-col label="Amp" direction="vertical">
-        <mid-knob label-text="Level" cc="7"></mid-knob>
-        <mid-knob label-text="Pan" cc="10"></mid-knob>
-        <big-button label-text="EG 2 / Gate" cc="86" off-value="0" active-value="127"></big-button>
-        <big-button label-text="Distortion" cc="92" off-value="0" active-value="127"></big-button>
+        <mid-knob label="Level" cc="7"></mid-knob>
+        <mid-knob label="Pan" cc="10"></mid-knob>
+        <big-button label="EG 2 / Gate" cc="86"></big-button>
+        <big-button label="Distortion" cc="92"></big-button>
     </ui-col>
 </ui-row>
 <ui-row>    
     <ui-col direction="vertical" label="Mod Seq">
-        <big-button label-text="On/Off" cc="89" off-value="0" active-value="127"></big-button>
-        <mid-knob label-text="Portamento" cc="5"></mid-knob>
+        <big-button label="On/Off" cc="89"></big-button>
+        <mid-knob label="Portamento" cc="5"></mid-knob>
     </ui-col>
     <ui-col>
-        <lfo-box label-text="LFO 1" wave-cc="87" rate-cc="27" waves="Saw Square Triangle S/H" wave-vals="0 43 85 127"></lfo-box>
-        <lfo-box label-text="LFO 2" wave-cc="88" rate-cc="76" waves="Saw Square Sine S/H" wave-vals="0 43 85 127"></lfo-box>
-        <adsr-env label-text="EG1" adsr-cc="23 24 25 26"></adsr-env>
-        <adsr-env label-text="EG2" adsr-cc="73 75 70 72"></adsr-env>
+        <lfo-box label="LFO 1" wave-cc="87" rate-cc="27" waves="Saw Square Triangle S/H" wave-vals="0 43 85 127"></lfo-box>
+        <lfo-box label="LFO 2" wave-cc="88" rate-cc="76" waves="Saw Square Sine S/H" wave-vals="0 43 85 127"></lfo-box>
+        <adsr-env label="EG1" adsr-cc="23 24 25 26"></adsr-env>
+        <adsr-env label="EG2" adsr-cc="73 75 70 72"></adsr-env>
     </ui-col>
     <ui-col direction="vertical" label="Effects">
-        <ui-col direction="vertical" label="Modulation">
-            <mid-knob label-text="Speed" cc="12"></mid-knob>
-            <mid-knob label-text="Depth" cc="93"></mid-knob>
-        </ui-col>
-        <ui-col direction="vertical" label="Delay">
-            <mid-knob label-text="Time" cc="13"></mid-knob>
-            <mid-knob label-text="Feedback" cc="94"></mid-knob>
-        </ui-col>
+        <ui-row label="Modulation">
+            <mid-knob label="Speed" cc="12"></mid-knob>
+            <mid-knob label="Depth" cc="93"></mid-knob>
+        </ui-row>
+        <ui-row label="Delay">
+            <mid-knob label="Time" cc="13"></mid-knob>
+            <mid-knob label="Feedback" cc="94"></mid-knob>
+        </ui-row>
     </ui-col>
     <ui-col direction="vertical" label="Virtual Patch1">
-        <mid-knob label-text="Patch 1 Amount" cc="28"></mid-knob>
-        <mid-knob label-text="Patch 2 Amount" cc="29"></mid-knob>
-        <mid-knob label-text="Patch 4 Amount" cc="30"></mid-knob>
-        <mid-knob label-text="Patch 4 Amount" cc="31"></mid-knob>
+        <ui-row>
+            <mid-knob label="Patch 1 Amount" cc="28"></mid-knob>
+            <mid-knob label="Patch 2 Amount" cc="29"></mid-knob>
+        </ui-row>
+        <ui-row>
+            <mid-knob label="Patch 4 Amount" cc="30"></mid-knob>
+            <mid-knob label="Patch 4 Amount" cc="31"></mid-knob>
+        </ui-row>
     </ui-col>
 </ui-row>

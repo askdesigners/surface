@@ -10,6 +10,7 @@
         :host {
             display: inline-block;
             margin: 0 auto;
+            flex-grow: 1;
         }
         :host.vertical {
             display: block;
@@ -80,7 +81,7 @@
                         </g>
                     </g>
                 </svg>
-                <label class="midknobLabel">{{labelText}}</label>
+                <label class="midknobLabel">{{label}}</label>
             </div>
         </template>
     </dom-module>
@@ -89,7 +90,7 @@
             is: "mid-knob",
             behaviors: [dragEventer],
             properties: {
-                labelText: {
+                label: {
                     type: String,
                     value: ""   
                 },
@@ -97,11 +98,11 @@
                     type: Number,
                     value: 0
                 },
-                minValue: {
+                min: {
                     type: Number,
                     value: 0
                 },
-                maxValue: {
+                max: {
                     type: Number,
                     value: 127
                 },
@@ -156,7 +157,7 @@
                 this.element.setAttribute('transform','rotate('+ (this._currentRot) +' 28.5 28.5)');
             },
             mapValue:function (decimal) {
-                this.controlValue = Math.round(this.maxValue * decimal);
+                this.controlValue = Math.round(this.max * decimal);
             },
             ready: function () {
                 this.element = this.$$('#midknob-knob');

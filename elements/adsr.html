@@ -13,6 +13,10 @@
                 min-width: 140px;
                 max-width: 250px;
                 margin: 15px auto;
+                padding: 10px;
+                background: rgba(216,216,216,.2);
+                border-radius: 5px;
+                box-sizing: border-box;
 
             }
             [micro-knob]{
@@ -33,12 +37,12 @@
             }
         </style>
         <template>  
-            <label class="adsrLabel">{{labelText}}</label>
+            <label class="adsrLabel">{{label}}</label>
             <section>
-                <micro-knob id="attack" label-text="A" control-value="{{_attackValue}}" cc="{{_attackCC}}" min-value="{{minValue}}" max-value="{{maxValue}}"></micro-knob>
-                <micro-knob id="decay" label-text="D" control-value="{{_decayValue}}" cc="{{_decayCC}}" min-value="{{minValue}}" max-value="{{maxValue}}"></micro-knob>
-                <micro-knob id="sustain" label-text="S" control-value="{{_sustainValue}}" cc="{{_sustainCC}}" min-value="{{minValue}}" max-value="{{maxValue}}"></micro-knob>
-                <micro-knob id="release" label-text="R" control-value="{{_releaseValue}}" cc="{{_releaseCC}}" min-value="{{minValue}}" max-value="{{maxValue}}"></micro-knob>
+                <micro-knob id="attack" label="A" control-value="{{_attackValue}}" cc="{{_attackCC}}" min-value="{{min}}" max-value="{{max}}"></micro-knob>
+                <micro-knob id="decay" label="D" control-value="{{_decayValue}}" cc="{{_decayCC}}" min-value="{{min}}" max-value="{{max}}"></micro-knob>
+                <micro-knob id="sustain" label="S" control-value="{{_sustainValue}}" cc="{{_sustainCC}}" min-value="{{min}}" max-value="{{max}}"></micro-knob>
+                <micro-knob id="release" label="R" control-value="{{_releaseValue}}" cc="{{_releaseCC}}" min-value="{{min}}" max-value="{{max}}"></micro-knob>
             </section>
         </template>
     </dom-module>
@@ -46,7 +50,7 @@
         Polymer({
             is: "adsr-env",
             properties: {
-                labelText: {
+                label: {
                     type: String,
                     value: ""   
                 },
@@ -54,11 +58,11 @@
                     type: String,
                     value: ""
                 },
-                minValue: {
+                min: {
                     type: Number,
                     value: 0
                 },
-                maxValue: {
+                max: {
                     type: Number,
                     value: 127
                 },
@@ -116,7 +120,7 @@
             },
             mapValue:function (decimal) {
                 // should get the max-range, derive a scaled range for Y in graph and return value
-                this.controlValue = Math.round(this.maxValue * decimal);
+                this.controlValue = Math.round(this.max * decimal);
             },
             ready: function () {
                 var vals = this.adsrCc.split(' ').map(Number);
