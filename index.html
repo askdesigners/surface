@@ -3,33 +3,30 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
-        <meta name="description" content="">
+        <title>Control Blocks – Alpha</title>
+        <meta name="description" content="Alpha for Control Blocks">
+        <script src='js/vendor/WebMIDIAPI.min.js'></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
         <link href="css/main.css" rel="stylesheet">
-        
         <link href="elements/surface-container.html" rel="import">
-
         <link href="elements/row.html" rel="import">
         <link href="elements/col.html" rel="import">
-
         <link href="elements/big-knob.html" rel="import">
         <link href="elements/mid-knob.html" rel="import">
         <link href="elements/micro-knob.html" rel="import">
-
         <link href="elements/adsr.html" rel="import">
         <link href="elements/lfo.html" rel="import">
         <link href="elements/btn-group.html" rel="import">
-
         <link href="elements/big-button.html" rel="import">
         <link href="elements/mid-button.html" rel="import">
         <link href="elements/micro-button.html" rel="import">
     </head>
     <body>
         <nav>
-            <!-- <h1 id="surfaceTitle">Surface IO</h1> -->
-            <select id="surfaces"></select>
+            <select id="surfaces">
+                <option value="--">Select a controller</option>
+            </select>
             <div id="controls">
                 <label>Channel</label>
                 <select id="channel">
@@ -54,8 +51,16 @@
                 <select id="output"></select>
             </div>
         </nav>
-        <!-- <section id="surfaceWrapper"></section> -->
-        <ui-surface></ui-surface>
+        <ui-surface>
+            <section id="onLaunchPlaceholder">
+                <h1>To get started, select your midi device in the upper right, and then load a controller from the upper left.</h1>
+                <h2>If you're having issues, make sure you are using Chrome, Firefox, Opera, Safari, or an IE newer than version 10. If you're still having issues, try installing the <a href="http://jazz-soft.net/download/Jazz-Plugin/">"Jazz Plugin"</a>, which should get midi working.</h2>
+            </section>
+        </ui-surface>
+        <script type="text/javascript" src="http://assets.freshdesk.com/widget/freshwidget.js"></script>
+        <script type="text/javascript">
+            FreshWidget.init("", {"queryString": "&widgetType=popup&formTitle=Have+an+idea+or+find+a+bug%3F&submitThanks=Thanks!+I'll+get+in+touch+as+soon+as+I+can.", "utf8": "✓", "widgetType": "popup", "buttonType": "text", "buttonText": "Send me a message", "buttonColor": "black", "buttonBg": "#FFFD54", "alignment": "3", "offset": "40px", "submitThanks": "Thanks! I'll get in touch as soon as I can.", "formHeight": "500px", "url": "https://tellmesomethingnice.freshdesk.com"} );
+        </script>
         <script src="js/vendor/jquery-1.11.2.js"></script>
         <script src="js/surface.js"></script>
         <script src="js/glue.js"></script>

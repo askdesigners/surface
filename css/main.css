@@ -5,12 +5,29 @@ body {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
     /*color: white;*/
-    color: rgba(41,41,41,0.8);
+    color: rgba(10,10,10,0.8);
     -webkit-user-select: none;
     padding: 20px 70px;
     font-size: 16px;
     background-color: lightgrey;
     transition: background-color 1s 0.5s;
+}
+
+a{
+    color: #1447E2;
+        text-decoration: none;
+    border-bottom: 2px solid;
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: 300;
+}
+
+h2 {
+    font-size: 1.2em;
+    font-weight: 300;
+    line-height: 1.7em;
 }
 
 nav {
@@ -24,6 +41,12 @@ nav h1 {
     display: inline-block;
     margin: 0;
     font-size: 2em;
+}
+
+#onLaunchPlaceholder{
+    padding: 20px;
+    background: #D1F5FF;
+    border-radius: 10px;
 }
 
 #surfaces{
