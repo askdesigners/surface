@@ -22,12 +22,28 @@ a{
 h1 {
     font-size: 2em;
     font-weight: 300;
+    line-height: 1.7em;
+    margin-bottom: 0;
 }
 
 h2 {
     font-size: 1.2em;
     font-weight: 300;
     line-height: 1.7em;
+}
+hr {    
+    margin: 40px 0;
+    border: 0;
+    height: 1px;
+    background: darkblue;
+}
+
+pre {
+    display: inline;
+}
+
+ol {
+    margin-top: 0;
 }
 
 nav {
