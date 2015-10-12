@@ -119,9 +119,12 @@ UI.prototype = {
             self.surfaceWrapper.html(data);
             self.sourcePre.text(data);
             self.toggleSource.show();
+            heap.track('Template Load', {template: name});
+
         })
-        .fail(function() {
-            console.log("error");
+        .fail(function(e) {
+            console.log("error", e);
+            heap.track('Template Load Fail', {error: JSON.stringify(e)});
         })
         .always(function() {
             console.log("complete");
