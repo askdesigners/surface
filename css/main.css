@@ -15,7 +15,7 @@ body {
 
 a{
     color: #1447E2;
-        text-decoration: none;
+    text-decoration: none;
     border-bottom: 2px solid;
 }
 
@@ -57,6 +57,40 @@ nav h1 {
     display: inline-block;
     margin: 0;
     font-size: 2em;
+}
+
+#showSource{
+    background: black;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    color: white;
+    margin-left: 30px;
+}
+
+#sourceWrapper{
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    opacity: 0;
+    transition: height 0.4s ease-in-out, padding 0.2s ease-in-out, opacity 0.3s;
+    position: absolute;
+    top: 100px;
+    border-radius: 5px;
+    width: 80%;
+}
+
+#sourceWrapper.visible {
+    max-height: 3000px;
+    padding: 30px;
+    background-color: #FFF;
+    opacity: 0.9;
+    overflow-x: scroll;
+}
+
+pre#source {
+    background: #F1E4F5;
 }
 
 #onLaunchPlaceholder{

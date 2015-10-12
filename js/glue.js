@@ -1,4 +1,4 @@
-    function UI(Surface){
+function UI(Surface){
     var self = this;
     this.$outputSel = $('#output');
     this.$surfaceSel = $('#surfaces');
@@ -6,6 +6,9 @@
     this.surfaceList = [];
     this.surface = Surface;
     this.surfaceWrapper = $('#surfaceWrapper');
+    this.sourceWrapper = $('#sourceWrapper');
+    this.sourcePre = $('#source');
+    this.toggleSource = $('#showSource');
     self.init();
 }
 
@@ -59,6 +62,8 @@ UI.prototype = {
 
         var self = this;
 
+        this.toggleSource.hide();
+
         this.$outputSel.on('change', function(){
             var sel = $(this);
             // self.$curOut.html(sel.html());
@@ -78,12 +83,18 @@ UI.prototype = {
         }
 
         this.buildOutputSelects();
+
         this.buildSurfaceSelects();
 
         $(document).on('sendMidiMessage', function (e) {
             self.surface.callRecievers(e.originalEvent.detail);
-            console.log(e.originalEvent.detail);
+            // console.log(e.originalEvent.detail);
         });
+
+        this.toggleSource.on('click', function () {
+            console.log('click', self.sourceWrapper);
+            self.sourceWrapper.toggleClass('visible');
+        })
     },
 
     loadTheme: function (file) {
@@ -94,8 +105,28 @@ UI.prototype = {
 
     loadTemplate: function (file, name) {
         console.log(file,this);
+        var self = this;
         this.surfaceWrapper.empty();
-        this.surfaceWrapper.load('surfaces/'+file);
+        this.sourcePre.empty();
+        // this.surfaceWrapper.load('surfaces/'+file);
+        $.ajax({
+            url: 'surfaces/'+file,
+            type: 'GET',
+            dataType: 'html'
+        })
+        .done(function(data) {
+            console.log("success");
+            self.surfaceWrapper.html(data);
+            self.sourcePre.text(data);
+            self.toggleSource.show();
+        })
+        .fail(function() {
+            console.log("error");
+        })
+        .always(function() {
+            console.log("complete");
+        });
+        
         $('#surfaceTitle').html(name);
     },
 

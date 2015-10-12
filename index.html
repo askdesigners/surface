@@ -27,6 +27,7 @@
             <select id="surfaces">
                 <option value="--">Select a controller</option>
             </select>
+            <button id="showSource">Toggle Source View</button>
             <div id="controls">
                 <label>Channel</label>
                 <select id="channel">
@@ -58,6 +59,7 @@
                 <h2>
                     Custom elements such as <pre>&lt;big-knob /&gt;</pre> and <pre>&lt;lfo-block&gt;</pre> are used to build controllers. My original initiative was because all the software synth editors out there are hopelessly tied to old and dying OS platforms (sound diver), or are hopelessly shitty (midiquest). The web lives forever.</h2>
                 <h2>This is a very basic proof-of-concept. Once I have some feedback, and have improved the process of getting midi working, I want to launch a kickstarter campaign to fund further developement. See the road map at the bottom for some ideas I have so far.</h2>
+                <h2><strong>NOTE:</strong> All CC messages get sent to channel 2 right now. I'm working on getting the channels working properly.</h2>
                 <hr/>
                 <h1>Get started</h1> 
                 <h2>
@@ -108,6 +110,9 @@
                 <h2>Make sure you are using Chrome, Firefox, Opera, Safari, or an IE newer than version 10. If you're still having issues, try installing the <a href="http://jazz-soft.net/download/Jazz-Plugin/">"Jazz Plugin"</a>, which should get midi working. IF you still need some help, hit the "send me a message" button below.</h2>
             </section>
         </ui-surface>
+        <section id="sourceWrapper">
+            <pre id="source"></pre>
+        </section>
         <script type="text/javascript" src="http://assets.freshdesk.com/widget/freshwidget.js"></script>
         <script type="text/javascript">
             FreshWidget.init("", {"queryString": "&widgetType=popup&formTitle=Have+an+idea+or+find+a+bug%3F&submitThanks=Thanks!+I'll+get+in+touch+as+soon+as+I+can.", "utf8": "✓", "widgetType": "popup", "buttonType": "text", "buttonText": "Send me a message", "buttonColor": "black", "buttonBg": "#FFFD54", "alignment": "3", "offset": "40px", "submitThanks": "Thanks! I'll get in touch as soon as I can.", "formHeight": "500px", "url": "https://tellmesomethingnice.freshdesk.com"} );
