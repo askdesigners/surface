@@ -12,13 +12,15 @@ I'm building a platform that will let people (you) build midi controllers in the
 ___
 
 ## Custom Elements
-Here's a preliminary list of elements. 
+Here's a preliminary list of elements. I've created these elements using Polymer to abstract away any complexity, and leave a simple api for controller-makers to use. The behaviour of each component is defined declaratively using html-like markup. Layouts are simplified using row and column containers, and clever css behind the scenes. 
 
 **Knobs**
 
 ```
 <big-knob label="Cutoff" cc="74"/>
+
 <mid-knob label="Resonance" cc="75"/>
+
 <micro-knob label="EG1" cc="76"/>
 ```
 
@@ -26,7 +28,9 @@ Here's a preliminary list of elements.
 
 ```
 <big-slider label="Cutoff" cc="80"/>
+
 <mid-slider label="Resonance" cc="81"/>
+
 <micro-slider label="EG1" cc="82"/>
 ```
 
@@ -34,7 +38,9 @@ Here's a preliminary list of elements.
 
 ```
 <big-button label="EG 2 / Gate" cc="86"/>
+
 <mid-button label="Sync" cc="87"/>
+
 <micro-button label="Voice 1" cc="88"/>
 ```
 
@@ -42,29 +48,37 @@ Here's a preliminary list of elements.
 
 ```
 <btn-group label="Type" cc="90" buttons="LPF24 LPF12 BPF12 HPF12" button-vals="0 43 85 127"/>
+
 <lfo-box label="LFO 1" wave-cc="87" rate-cc="27" waves="Saw Square Triangle S/H" wave-vals="0 43 85 127"/>
+
 <adsr-env label="EG1" adsr-cc="23 24 25 26"/>
+```
+
+**Layout**
+
+```
+<ui-row label="Osc 1">...</ui-row>
+
+<ui-col label="Filter 1">...</ui-col>
 ```
 
 ---
 
-## This is a very basic proof-of-concept. See the road map at the bottom for some ideas I have so far.
+This is a very basic proof-of-concept. See the road map at the bottom for some ideas I have so far.  
 
-## NOTE: All CC messages get sent to channel 2 right now. I'm working on getting the channels working properly. :p
+**NOTE:** All CC messages get sent to channel 2 right now. I'm working on getting the channels working properly. :p
 
 ---
 
-# Get started
-
+## Get started
 1.  Select your midi device in the upper right
 2.  Load a controller from the upper left
 3.  Test that you are able to get a midi signal out of the page
 
 ---
 
-# Feature Roadmap
-
-## If I can manage to carve out some time for this it would allow me to expand the concept considerably. Here are some ideas I have so far.
+## Feature Roadmap
+If I can manage to carve out some time for this it would allow me to expand the concept considerably. Here are some ideas I have so far.
 
 **Patches**
 
@@ -94,6 +108,5 @@ _Hardware synths are awesome, and have large numbers of users. However they are 
 
 ---
 
-# If you're having issues
-
-## Make sure you are using Chrome, Firefox, Opera, Safari, or an IE newer than version 10\. If you're still having issues, try installing the ["Jazz Plugin"](http://jazz-soft.net/download/Jazz-Plugin/), which should get midi working. IF you still need some help, hit the "send me a message" button below.
+## If you're having issues
+Make sure you are using Chrome, Firefox, Opera, Safari, or an IE newer than version 10\. If you're still having issues, try installing the ["Jazz Plugin"](http://jazz-soft.net/download/Jazz-Plugin/), which should get midi working.
